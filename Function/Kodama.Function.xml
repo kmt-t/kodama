@@ -1,0 +1,386 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Kodama.Function</name>
+    </assembly>
+    <members>
+        <member name="T:Kodama.Function.Functor.Bind.BindFunctor">
+            <summary>
+            他の関数オブジェクトの引数をバインドする関数オブジェクトです
+            </summary>
+            <remarks>
+            C++でいうSTL/Boostのbindに相当します。
+            </remarks>
+            <example>
+            <code lang="C#">
+            
+            public class TestClass1
+            {
+                public void Print(string arg1, string arg2, object arg3, string arg4)
+                {
+                    Console.WriteLine(arg1);
+                    Console.WriteLine(arg2);
+                    Console.WriteLine(arg3.ToString());
+                    Console.WriteLine(arg4);
+                }
+            }
+            
+            public class TestClass2
+            {
+                public override string ToString()
+                {
+                    return "3";
+                }
+            }
+            
+            // この関数を呼ぶと、コンソールに"1"、"2"、"3"、"4"と4行表示されます
+            public void BindFunctorTest()
+            {
+                // 引数をバインドする対象のMemberFunctorを生成する
+                IFunctor memberFunctor = new MemberFunctor(typeof(TestClass1).GetMethod("Print"));
+            
+                // BindFunctorを生成する。このとき引数のバインドを行う
+                IFunctor bindFunctor = new BindFunctor(
+                    // 引数をバインドするMemberFunctor
+                    memberFunctor,
+                    // methodFunctorの第1引数はバインドしない引数の指定
+                    new NotBoundArgument(0),
+                    // methodFunctorの第2引数をバインド
+                    "1",
+                    // methodFunctorの第3引数はバインドしない引数の指定
+                    new NotBoundArgument(1),
+                    // BindFunctor#Invoke毎に新しいTestClass2のインスタンスがバインドされる
+                    BindUtility.Create(typeof(TestClass2), null), 
+                    // methodFunctorの第5引数をバインド
+                    "4"});
+            
+                // 関数オブジェクトの呼び出し
+                // ここでバインドしてない引数を渡します
+                bindFunctor.Invoke(new TestClass1(), "2");
+            }
+            </code>
+            </example>
+            <seealso href="http://boost.cppll.jp/HEAD/">Boostリファレンス日本語訳</seealso>
+        </member>
+        <member name="T:Kodama.Function.Functor.IFunctor">
+            <summary>
+            関数オブジェクトインターフェイス
+            </summary>
+            <remarks>
+            C++でいう関数オブジェクトの基底となるインターフェイス。
+            </remarks>
+        </member>
+        <member name="M:Kodama.Function.Functor.IFunctor.ConvertToDelegate">
+            <summary>
+            関数オブジェクトをデリゲートに変換して返す
+            </summary>
+            <returns>関数オブジェクトから変換されたデリゲート</returns>
+        </member>
+        <member name="M:Kodama.Function.Functor.IFunctor.Invoke(System.Object[])">
+            <summary>
+            関数オブジェクトの呼び出し
+            </summary>
+            <param name="arguments">関数オブジェクトの処理の引数</param>
+            <returns>関数オブジェクトの処理の戻り値</returns>
+        </member>
+        <member name="M:Kodama.Function.Functor.IFunctor.Invoke">
+            <summary>
+            関数オブジェクトの呼び出し
+            </summary>
+            <returns>関数オブジェクトの処理の戻り値</returns>
+        </member>
+        <member name="F:Kodama.Function.Functor.Bind.BindFunctor.internalFunctor">
+            <summary>
+            引数をバインドする関数オブジェクト
+            </summary>
+        </member>
+        <member name="F:Kodama.Function.Functor.Bind.BindFunctor.boundArguments">
+            <summary>
+            バインドされた引数
+            </summary>
+        </member>
+        <member name="M:Kodama.Function.Functor.Bind.BindFunctor.ConvertToDelegate">
+            <summary>
+            関数オブジェクトをデリゲートに変換して返す
+            </summary>
+            <returns>関数オブジェクトから変換されたデリゲート</returns>
+        </member>
+        <member name="M:Kodama.Function.Functor.Bind.BindFunctor.#ctor(Kodama.Function.Functor.IFunctor,System.Object[])">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="functor">バインドする関数オブジェクト</param>
+            <param name="arguments">バインドする引数</param>
+        </member>
+        <member name="M:Kodama.Function.Functor.Bind.BindFunctor.GetBoundArguments">
+            <summary>
+            バインドされた引数を返します
+            </summary>
+            <returns>バインドされた引数</returns>
+        </member>
+        <member name="M:Kodama.Function.Functor.Bind.BindFunctor.Invoke">
+            <summary>
+            関数オブジェクトの呼び出し
+            </summary>
+            <returns>関数オブジェクトの処理の戻り値</returns>
+            <exception cref="T:Kodama.Function.Functor.UnmatchArgumentException">引数の数と型があわない場合はこの例外を投げる</exception>
+        </member>
+        <member name="M:Kodama.Function.Functor.Bind.BindFunctor.Invoke(System.Object[])">
+            <summary>
+            関数オブジェクトの呼び出し
+            </summary>
+            <param name="arguments">関数オブジェクトの処理の引数</param>
+            <returns>関数オブジェクトの処理の戻り値</returns>
+            <exception cref="T:Kodama.Function.Functor.UnmatchArgumentException">引数の数と型があわない場合はこの例外を投げる</exception>
+        </member>
+        <member name="T:Kodama.Function.Functor.Bind.BindUtility">
+            <summary>
+            引数がバインドされたコンストラクタ、メソッドを取得するためのユーティリティ
+            </summary>
+        </member>
+        <member name="M:Kodama.Function.Functor.Bind.BindUtility.CreateBindConstructor(System.Type,System.Object[])">
+            <summary>
+            指定されたパラメータで引数がバインドされたコンストラクタを返す
+            </summary>
+            <param name="type">バインドするコンストラクタを持つ型</param>
+            <param name="arguments">バインドするパラメータ</param>
+            <returns>引数がバインドされたコンストラクタ</returns>
+            <exception cref="T:Kodama.Function.Functor.UnmatchArgumentException">
+            指定されたパラメータでコンストラクタがバインドできなかった場合に発生する例外
+            </exception>
+        </member>
+        <member name="M:Kodama.Function.Functor.Bind.BindUtility.CreateBindMember(System.Type,System.String,System.Object[])">
+            <summary>
+            指定されたパラメータで引数がバインドされたメソッドを返す
+            </summary>
+            <param name="type">バインドするメソッドを持つ型</param>
+            <param name="name">バインドするメソッド名</param>
+            <param name="arguments">バインドするパラメータ</param>
+            <returns>引数がバインドされたメソッド</returns>
+            <exception cref="T:Kodama.Function.Functor.UnmatchArgumentException">
+            指定されたパラメータでメソッドがバインドできなかった場合に発生する例外
+            </exception>
+        </member>
+        <member name="M:Kodama.Function.Functor.Bind.BindUtility.IsCompatibleArguments(System.Reflection.MethodBase,System.Object[])">
+            <summary>
+            指定されたメソッドが指定されたパラメータで引数をバインド可能かどうか判定する
+            </summary>
+            <param name="method">バインド可能かどうか判定するメソッド</param>
+            <param name="arguments">バインドするパラメータ</param>
+            <returns>指定されたメソッドが指定されたパラメータで引数をバインド可能かどうか</returns>
+        </member>
+        <member name="T:Kodama.Function.Functor.Bind.IArgumentProvider">
+            <summary>
+            バインドする引数をBindFunctor#Invoke呼び出し時に毎に遅延して提供するインターフェイス
+            </summary>
+            <remarks>
+            BindFunctorのバインドする引数としてこれを渡すと、
+            BindFunctor#Invokeの呼び出しごとにバインドされる引数が
+            IArgumentProvider#Provideで返される値になる。
+            C++のbindには同じような機能は存在しません。
+            </remarks>
+            <seealso cref="T:Kodama.Function.Functor.Bind.BindFunctor"/>
+        </member>
+        <member name="M:Kodama.Function.Functor.Bind.IArgumentProvider.Provide">
+            <summary>
+            遅延してバインドする引数を取得する
+            </summary>
+            <returns>遅延してバインドする引数</returns>
+        </member>
+        <member name="T:Kodama.Function.Functor.Bind.NotBoundArgument">
+            <summary>
+            BindFunctorでバインドしないパラメータはこのクラスのインスタンスを渡します
+            </summary>
+            <remarks>
+            C++でいうBoostのbindの_1、_2、_3と同一のものです。
+            </remarks>
+            <seealso cref="T:Kodama.Function.Functor.Bind.BindFunctor"/>
+            <seealso href="http://boost.cppll.jp/HEAD/">Boostリファレンス日本語訳</seealso>
+        </member>
+        <member name="F:Kodama.Function.Functor.Bind.NotBoundArgument.argumentIndex">
+            <summary>
+            BoundFunctor#Invokeの何番目の引数にあたるか示すインデックス
+            </summary>
+        </member>
+        <member name="M:Kodama.Function.Functor.Bind.NotBoundArgument.#ctor(System.Int32)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="index">BoundFunctor#Invokeの何番目の引数にあたるか示すインデックス</param>
+        </member>
+        <member name="P:Kodama.Function.Functor.Bind.NotBoundArgument.Index">
+            <summary>
+            BoundFunctor#Invokeの何番目の引数にあたるか示すインデックス
+            </summary>
+        </member>
+        <member name="T:Kodama.Function.Functor.Member.ConstructorFunctor">
+            <summary>
+            コンストラクタの呼び出しを関数オブジェクトにしたものです
+            </summary>
+        </member>
+        <member name="F:Kodama.Function.Functor.Member.ConstructorFunctor.internalConstructor">
+            <summary>
+            ConstructorFunctorで呼び出すコンストラクタ
+            </summary>
+        </member>
+        <member name="M:Kodama.Function.Functor.Member.ConstructorFunctor.#ctor(System.Reflection.ConstructorInfo)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="constructor">ConstructorFunctorで呼び出すコンストラクタ</param>
+        </member>
+        <member name="M:Kodama.Function.Functor.Member.ConstructorFunctor.ConvertToDelegate">
+            <summary>
+            関数オブジェクトをデリゲートに変換して返す
+            </summary>
+            <returns>関数オブジェクトから変換されたデリゲート</returns>
+        </member>
+        <member name="M:Kodama.Function.Functor.Member.ConstructorFunctor.Invoke">
+            <summary>
+            関数オブジェクトの呼び出し
+            </summary>
+            <returns>関数オブジェクトの処理の戻り値</returns>
+            <exception cref="T:Kodama.Function.Functor.UnmatchArgumentException">引数の数と型があわない場合はこの例外を投げる</exception>
+        </member>
+        <member name="M:Kodama.Function.Functor.Member.ConstructorFunctor.Invoke(System.Object[])">
+            <summary>
+            関数オブジェクトの呼び出し
+            </summary>
+            <param name="arguments">関数オブジェクトの処理の引数</param>
+            <returns>関数オブジェクトの処理の戻り値</returns>
+            <exception cref="T:Kodama.Function.Functor.UnmatchArgumentException">引数の数と型があわない場合はこの例外を投げる</exception>
+        </member>
+        <member name="T:Kodama.Function.Functor.Member.MemberFunctor">
+            <summary>
+            インスタンスメソッドの呼び出しを関数オブジェクトにしたものです
+            </summary>
+            <remarks>
+            C++でいうSTL/Boostのmem_funに相当します。
+            </remarks>
+            <example>
+            <code lang="C#">
+            
+            // このクラスのメソッドをMemberFunctorをつかって呼び出します
+            public class TestClass
+            {
+                // このメソッドをMemberFunctorをつかって呼び出します
+                public void Print(string arg1, string arg2, string arg3, string arg4)
+                {
+                    Console.WriteLine(arg1);
+                    Console.WriteLine(arg2);
+                    Console.WriteLine(arg3);
+                    Console.WriteLine(arg4);
+                }
+            }
+            
+            // この関数を呼ぶと、コンソールに"1"、"2"、"3"、"4"と4行表示されます
+            public void MemberFunctorTest()
+            {
+                // MemberFunctorを生成します
+                IFunctor functor = new MemberFunctor(typeof(TestClass).GetMethod("Print"));
+            
+                // MemberFunctorを呼び出します
+                // この場合、以下のコードと同じ動作になります。
+                //    TestClass ts = new TestClass();
+                //    ts.Print("1", "2", "3", "4");
+                functor.Invoke(new TestClass(), "1", "2", "3", "4");
+            }
+            </code>
+            </example>
+            <seealso href="http://boost.cppll.jp/HEAD/">Boostリファレンス日本語訳</seealso>
+        </member>
+        <member name="F:Kodama.Function.Functor.Member.MemberFunctor.internalMethod">
+            <summary>
+            MemberFunctorで呼び出すインスタンスメソッド
+            </summary>
+        </member>
+        <member name="M:Kodama.Function.Functor.Member.MemberFunctor.#ctor(System.Reflection.MethodBase)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="method">MemberFunctorで呼び出すインスタンスメソッド</param>
+        </member>
+        <member name="M:Kodama.Function.Functor.Member.MemberFunctor.ConvertToDelegate">
+            <summary>
+            関数オブジェクトをデリゲートに変換して返す
+            </summary>
+            <returns>関数オブジェクトから変換されたデリゲート</returns>
+        </member>
+        <member name="M:Kodama.Function.Functor.Member.MemberFunctor.Invoke">
+            <summary>
+            関数オブジェクトの呼び出し
+            </summary>
+            <returns>関数オブジェクトの処理の戻り値</returns>
+            <exception cref="T:Kodama.Function.Functor.UnmatchArgumentException">引数の数と型があわない場合はこの例外を投げる</exception>
+        </member>
+        <member name="M:Kodama.Function.Functor.Member.MemberFunctor.Invoke(System.Object[])">
+            <summary>
+            関数オブジェクトの呼び出し
+            </summary>
+            <param name="arguments">関数オブジェクトの処理の引数</param>
+            <returns>関数オブジェクトの処理の戻り値</returns>
+            <exception cref="T:Kodama.Function.Functor.UnmatchArgumentException">引数の数と型があわない場合はこの例外を投げる</exception>
+        </member>
+        <member name="T:Kodama.Function.Functor.DelegateFunctor">
+            <summary>
+            デリゲートを関数オブジェクトに変換したものです
+            </summary>
+        </member>
+        <member name="F:Kodama.Function.Functor.DelegateFunctor.internalDelegate">
+            <summary>
+            関数オブジェクトの呼び出しは内部的にはこのデリゲートが処理する
+            </summary>
+        </member>
+        <member name="M:Kodama.Function.Functor.DelegateFunctor.#ctor(Kodama.Function.Functor.FunctorHandler)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="initialDelegate">関数オブジェクトが呼び出されるときに実行されるデリゲート</param>
+        </member>
+        <member name="M:Kodama.Function.Functor.DelegateFunctor.ConvertToDelegate">
+            <summary>
+            関数オブジェクトをデリゲートに変換して返す
+            </summary>
+            <returns>関数オブジェクトから変換されたデリゲート</returns>
+        </member>
+        <member name="M:Kodama.Function.Functor.DelegateFunctor.Invoke">
+            <summary>
+            関数オブジェクトの呼び出し
+            </summary>
+            <returns>関数オブジェクトの処理の戻り値</returns>
+        </member>
+        <member name="M:Kodama.Function.Functor.DelegateFunctor.Invoke(System.Object[])">
+            <summary>
+            関数オブジェクトの呼び出し
+            </summary>
+            <param name="arguments">関数オブジェクトの処理の引数</param>
+            <returns>関数オブジェクトの処理の戻り値</returns>
+        </member>
+        <member name="T:Kodama.Function.Functor.FunctorHandler">
+            <summary>
+            関数オブジェクトをデリゲートに変換したもの
+            </summary>
+        </member>
+        <member name="T:Kodama.Function.Functor.UnmatchArgumentException">
+            <summary>
+            関数オブジェクトが引数の数が違ったり、互換性のない型を渡されて
+            呼び出された場合に発生する例外
+            </summary>
+        </member>
+        <member name="M:Kodama.Function.Functor.UnmatchArgumentException.#ctor">
+            <summary>
+            コンストラクタ
+            </summary>
+        </member>
+        <member name="T:Kodama.Function.Functor.UnmatchReturnTypeException">
+            <summary>
+            関数オブジェクトの呼び出しが互換性のない型を返してきた場合に発生する例外
+            </summary>
+        </member>
+        <member name="M:Kodama.Function.Functor.UnmatchReturnTypeException.#ctor">
+            <summary>
+            コンストラクタ
+            </summary>
+        </member>
+    </members>
+</doc>

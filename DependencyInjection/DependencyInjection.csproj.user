@@ -1,0 +1,48 @@
+<VisualStudioProject>
+    <CSHARP LastOpenVersion = "7.10.3077" >
+        <Build>
+            <Settings ReferencePath = "C:\eclipse\workspace\Kodama\Script\bin\Debug\;C:\eclipse\workspace\Kodama\FunctionalUtility\bin\Debug\;D:\My Documents\Visual Studio Projects\Kodama\FunctionalUtility\bin\Debug\;D:\My Documents\Visual Studio Projects\Kodama\FunctionalUtility\bin\Release\;E:\My Documents\Visual Studio Projects\Kodama\Script\bin\Debug\;E:\My Documents\Visual Studio Projects\Kodama\FunctionalUtility\bin\Debug\;D:\My Documents\Visual Studio Projects\Kodama\Script\bin\Debug\;E:\My Documents\Visual Studio Projects\Kodama2\Kodama\FunctionalUtility\bin\Debug\;E:\My Documents\Visual Studio Projects\Kodama2\Kodama\Script\bin\Debug\;C:\eclipse\workspace\Kodama\Aop\bin\Debug\;C:\eclipse\workspace\Kodama\Function\bin\Debug\;D:\eclipse\workspace\Kodama\Aop\bin\Debug\;D:\eclipse\workspace\Kodama\Function\bin\Debug\;C:\Documents and Settings\Administrator\デスクトップ\Kodama-0.9.26\Kodama\Aop\bin\Debug\;C:\Documents and Settings\Administrator\デスクトップ\Kodama-0.9.26\Kodama\Function\bin\Debug\;C:\Documents and Settings\Administrator\デスクトップ\Kodama-0.9.26\Kodama\Script\bin\Debug\;C:\Documents and Settings\Administrator\デスクトップ\Kodama\Aop\bin\Debug\;C:\Documents and Settings\Administrator\デスクトップ\Kodama\Function\bin\Debug\;C:\Documents and Settings\Administrator\デスクトップ\Kodama\Script\bin\Debug\" >
+                <Config
+                    Name = "Debug"
+                    EnableASPDebugging = "false"
+                    EnableASPXDebugging = "false"
+                    EnableUnmanagedDebugging = "false"
+                    EnableSQLServerDebugging = "false"
+                    RemoteDebugEnabled = "false"
+                    RemoteDebugMachine = ""
+                    StartAction = "Project"
+                    StartArguments = ""
+                    StartPage = ""
+                    StartProgram = ""
+                    StartURL = ""
+                    StartWorkingDirectory = ""
+                    StartWithIE = "false"
+                />
+                <Config
+                    Name = "Release"
+                    EnableASPDebugging = "false"
+                    EnableASPXDebugging = "false"
+                    EnableUnmanagedDebugging = "false"
+                    EnableSQLServerDebugging = "false"
+                    RemoteDebugEnabled = "false"
+                    RemoteDebugMachine = ""
+                    StartAction = "Project"
+                    StartArguments = ""
+                    StartPage = ""
+                    StartProgram = ""
+                    StartURL = ""
+                    StartWorkingDirectory = ""
+                    StartWithIE = "false"
+                />
+            </Settings>
+        </Build>
+        <OtherProjectSettings
+            CopyProjectDestinationFolder = ""
+            CopyProjectUncPath = ""
+            CopyProjectOption = "0"
+            ProjectView = "ProjectFiles"
+            ProjectTrust = "0"
+        />
+    </CSHARP>
+</VisualStudioProject>
+

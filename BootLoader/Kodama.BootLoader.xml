@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Kodama.BootLoader</name>
+    </assembly>
+    <members>
+        <member name="T:Kodama.BootLoader.Schema.referenceAssembly">
+            <remarks/>
+        </member>
+        <member name="F:Kodama.BootLoader.Schema.referenceAssembly.Items">
+            <remarks/>
+        </member>
+        <member name="T:Kodama.BootLoader.Schema.referenceAssemblyAssembly">
+            <remarks/>
+        </member>
+        <member name="F:Kodama.BootLoader.Schema.referenceAssemblyAssembly.name">
+            <remarks/>
+        </member>
+        <member name="T:Kodama.BootLoader.StandAloneBootLoader">
+            <summary>
+            スタンドアローンアプリケーションのブートローダ
+            </summary>
+            <remarks>
+            <p>ブートローダは実行ファイルです。以下のような動作をします。</p>
+            <p>1.ユーザがブートローダを起動する</p>
+            <p>2.ブートローダがコマンドライン引数に渡されたスクリプトをセットアップする</p>
+            <p>3.スクリプトのエントリーポイントを呼び出す</p>
+            <p>4.スクリプト上でDependencyInjectionコンテナにコンポーネントの登録や、
+              プロパティのバインドを行う</p>
+            <p>5.コンテナに登録されたコンポーネントのエントリーポイント(起動用のインターフェイス)
+              をスクリプトから呼び出す</p>
+            <br/>
+            <p>ブートローダのコマンドライン引数は以下のようになっています。</p>
+            <li>-s スクリプトファイルの指定(複数指定不可)。スクリプトはVBScript、JScript、C#が利用可能</li>
+            <li>-c スクリプトで参照するアセンブリが書かれたXMLファイルの指定(複数指定不可)</li>
+            <p>-s指定は必須ですが、-cはオプションです。例をあげれば以下のような起動パラメータとなります。</p>
+            <code>
+            StandAloneBootLoader -s boot.vb -c ref.xml
+            </code>
+            <p>スクリプトで参照するアセンブリが書かれたXMLファイルの表記ですが、
+            以下のようになっています。</p>
+            <code>
+            &lt;?xml version="1.0" encoding="shift_jis"?&gt;
+            &lt;referenceAssembly&gt;
+                &lt;assembly name="foo.dll"/&gt;
+                &lt;assembly name="bar.dll"/&gt;
+            &lt;/referenceAssembly&gt;
+            </code>
+            <p>詳細は"Kodama\BootLoader\Schema\ReferenceAssembly.xsd"参照。</p>
+            </remarks>
+        </member>
+        <member name="M:Kodama.BootLoader.StandAloneBootLoader.Main(System.String[])">
+            <summary>
+            スタンドアローンアプリケーションのエントリーポイントです
+            </summary>
+            <param name="args">コマンドライン引数</param>
+        </member>
+    </members>
+</doc>

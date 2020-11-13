@@ -1,0 +1,110 @@
+<html dir="LTR">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=shift_jis" />
+    <meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5" />
+    <title>AspectWeaver クラス</title>
+    <xml>
+    </xml>
+    <link rel="stylesheet" type="text/css" href="MSDN.css" />
+  </head>
+  <body id="bodyID" class="dtBODY">
+    <div id="nsbanner">
+      <div id="bannerrow1">
+        <table class="bannerparthead" cellspacing="0">
+          <tr id="hdr">
+            <td class="runninghead">Kodama</td>
+            <td class="product">
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div id="TitleRow">
+        <h1 class="dtH1">AspectWeaver クラス</h1>
+      </div>
+    </div>
+    <div id="nstext">
+      <p class="topicstatus">[This is preliminary documentation and subject to change.]</p>
+      <p> AspectのWeave処理をするクラスです </p>
+      <p>この型のすべてのメンバの一覧については、 <a href="Kodama.Aop.Weaver.AspectWeaverMembers.html">AspectWeaver メンバ</a>を参照してください。</p>
+      <p>
+        <a href="ms-help://MS.NETFrameworkSDKv1.1.JA/cpref/html/frlrfSystemObjectClassTopic.htm">System.Object</a>
+        <br />&nbsp;&nbsp;&nbsp;<b>Kodama.Aop.Weaver.AspectWeaver</b></p>
+      <div class="syntax">
+        <div>public&nbsp;class&nbsp;AspectWeaver</div>
+      </div>
+      <H4 class="dtH4">スレッドセーフ</H4>
+      <P>この型の public static (Visual Basicでは <B>Shared</B>) のすべてのメンバは、
+				マルチスレッド操作で安全に使用できます。インスタンスのメンバの場合は、スレッドセーフであるとは限りません。</P>
+      <h4 class="dtH4">解説</h4>
+            <p>このクラスはグローバルにインスタンスの生成時に処理を行うために Singletonになっています。</p>
+            <p>このクラスでWeaveするAspectを登録すると、クラス生成時にAspectが Weaveされます。また、既に生成された既存のインスタンスにAspectを Weaveすることも可能です。</p>
+            <p>透過的プロクシとメッセージシンクを利用しているため、Weave対象と なるオブジェクトはContextBoundObjectを継承している必要があります。</p>
+            <p>注意点は透過的プロクシとスタックビルダーシンクのオーバーヘッドが メソッド呼び出しなどにがかかることです。パフォーマンスが要求される場合は アスペクトを利用しない(ContextBoundObjectを継承せずAspectAttribute属性 も指定しない)ことを推奨します。</p>
+            <p>もうひとつの注意点は透過的プロクシはコンストラクタを直接インターセプト することができません。なので、コンストラクタをインターセプトしたい場合は、 コンストラクタから初期化用のメソッドを呼び出すようにして、その初期化用の メソッドをインターセプトして下さい。</p>
+            <h4 class="dtH4">使用例</h4><p>
+            <pre class="code"><span class="lang">[C#]
+</span>
+// IMethodInterceptorはメソッドの呼び出しをインターセプトします。
+// 派生クラスでIMethodInterceptor#Invokeをオーバーライドして
+// インターセプトの処理を書いてください。また、IMethodInterceptor#Invoke内
+// では必ず1回、MethodInvocation#Proceedを呼んでください。
+// MethodInvocation#Proceedが呼ばれると、インターセプトされたメソッドの
+// 本来の処理が実行されます。
+public class TestInterceptor : IMethodInterceptor
+{
+    public object Invoke(MethodInvocation invocation, out object[] outArguments)
+    {
+        Console.WriteLine("Pre");
+        object ret = invocation.Proceed(out outArguments);
+        Console.WriteLine("Post");
+        return ret;
+    }
+}
+
+// AttributePointcutの指定で利用する属性を定義します
+[AttributeUsage(AttributeTargets.Method)]
+public class TestInterceptAttribute : Attribute
+{
+}
+
+// アスペクトをWeaveするクラスにはAspectTarget属性をつけます。
+// また、ContextBoundObjectを継承します。
+[AspectTarget]
+public class TestAspectWeavedClass : ContextBoundObject
+{
+    // このメソッドがInterceptされるメソッドです。
+    // AttributePointcutを利用する場合、インターセプトされるメソッドには
+    // 適当に定義した属性をつけて、AttributePointcutの作成時にその属性を指定します。
+    // SignaturePointcutを利用する場合は、メソッド名を正規表現で指定できる
+    // ので属性の指定はいりません。
+    [TestIntercept]
+    public void Hello()
+    {
+        Console.WriteLine("Hello");
+    }
+}
+
+// このメソッドを実行すると、コンソールに、
+// "Pre","Hello","Post"の順で3行、表示されます
+public void MethodAttrInterceptTest()
+{
+    // Aspectの生成
+    // InterceptorとPointcutを設定します
+    IAspect aspect = new AspectImpl(
+        new TestInterceptor(),
+        new MethodAttributePointcut(typeof(TestInterceptAttribute));
+
+    // Aspectの登録
+    AspectWeaver.Instance().Register(aspect);
+
+    // インスタンスの生成は普通のnew演算子でOKです
+    TestAspectWeavedClass wc = new TestAspectWeavedClass();
+
+    // このメソッドがTestInterceptorでインターセプトされます
+    wc.Hello();
+}
+</pre>
+            </p><h4 class="dtH4">必要条件</h4><p><b>名前空間: </b><a href="Kodama.Aop.Weaver.html">Kodama.Aop.Weaver</a></p><p><b>アセンブリ: </b>Kodama.Aop (Kodama.Aop.dll 内)
+					</p><h4 class="dtH4">参照</h4><p><a href="Kodama.Aop.Weaver.AspectWeaver.html">AspectWeaver クラス</a> | <a href="Kodama.Aop.Weaver.AspectWeaverMembers.html">AspectWeaver メンバ</a> | <a href="Kodama.Aop.Weaver.html">Kodama.Aop.Weaver 名前空間</a></p><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e" viewastext="true" style="display: none;"><param name="Keyword" value="AspectWeaver クラス, AspectWeaver クラスについて"></param></object><hr /><div id="footer"><p><a href="license.txt">Copyright (c) 2004 The Kodama Project. All rights reserved.</a></p><p></p></div></div>
+  </body>
+</html>

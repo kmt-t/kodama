@@ -1,0 +1,156 @@
+<html dir="LTR">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=shift_jis" />
+    <meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5" />
+    <title>ComponentContainerImpl クラス</title>
+    <xml>
+    </xml>
+    <link rel="stylesheet" type="text/css" href="MSDN.css" />
+  </head>
+  <body id="bodyID" class="dtBODY">
+    <div id="nsbanner">
+      <div id="bannerrow1">
+        <table class="bannerparthead" cellspacing="0">
+          <tr id="hdr">
+            <td class="runninghead">Kodama</td>
+            <td class="product">
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div id="TitleRow">
+        <h1 class="dtH1">ComponentContainerImpl クラス</h1>
+      </div>
+    </div>
+    <div id="nstext">
+      <p class="topicstatus">[This is preliminary documentation and subject to change.]</p>
+      <p> DependencyInjectionコンテナの実装クラスです </p>
+      <p>この型のすべてのメンバの一覧については、 <a href="Kodama.DependencyInjection.Container.ComponentContainerImplMembers.html">ComponentContainerImpl メンバ</a>を参照してください。</p>
+      <p>
+        <a href="ms-help://MS.NETFrameworkSDKv1.1.JA/cpref/html/frlrfSystemObjectClassTopic.htm">System.Object</a>
+        <br />&nbsp;&nbsp;&nbsp;<b>Kodama.DependencyInjection.Container.ComponentContainerImpl</b></p>
+      <div class="syntax">
+        <div>public&nbsp;class&nbsp;ComponentContainerImpl<b> : <a href="Kodama.DependencyInjection.Container.IMutableComponentContainer.html">IMutableComponentContainer</a>, <a href="Kodama.DependencyInjection.Container.IComponentContainer.html">IComponentContainer</a></b></div>
+      </div>
+      <H4 class="dtH4">スレッドセーフ</H4>
+      <P>この型の public static (Visual Basicでは <B>Shared</B>) のすべてのメンバは、
+				マルチスレッド操作で安全に使用できます。インスタンスのメンバの場合は、スレッドセーフであるとは限りません。</P>
+      <h4 class="dtH4">使用例</h4>
+      <p>
+            <pre class="code"><span class="lang">[C#]
+</span>using System;
+using Kodama.DependencyInjection.Component;
+using Kodama.DependencyInjection.Container;
+using Kodama.DependencyInjection.Factory;
+using Kodama.Function;
+using Kodama.Function.Bind;
+using Kodama.Function.Member;
+
+....
+
+public interface IBar
+{
+    void Print();
+}
+
+public class BarImpl : IBar
+{
+    public void Print()
+    {
+        Console.WriteLine("BarImpl");
+    }
+}
+
+public class Foo
+{
+    private IBar dependency1;
+    private IBar dependency2;
+    private int  val;
+
+    // InjectionPoint属性のついたメソッドは自動的に
+    // セッターインジェクションのメソッドに設定される
+    [InjectionPoint]
+    public void SetDependency1(IBar dep)
+    {
+        dependency1 = dep;
+    }
+
+    public void SetDependency2(IBar dep, int v)
+    {
+        dependency2 = dep;
+        val         = v;
+    }
+
+    // InitializationPoint属性のついたメソッドは自動的に
+    // 初期化メソッドに設定される
+    [InitializationPoint]
+    public void Initialize1()
+    {
+        Console.WriteLine("Init1");
+    }
+
+    public void Initialize2(int v)
+    {
+        Console.WriteLine("Init2 val = " + v.ToString());
+    }
+}
+
+...
+
+// 通常はコンテナへのコンポーネントの登録、セッターインジェクション及び
+// 初期化メソッドの設定はスクリプトで行う。
+// 詳細はKodama.DependencyInjection.Factory.DefaultComponetContainerFactory#Create
+// メソッドのオーバーロードを参照。
+
+IMutableComponentContainer container = new ComponentContainerImpl();
+
+continer.Register(typeof(BarImpl));
+
+IComponentEntry entry = new PrototypeComponetEntry(container, typeof(Foo));
+
+// 手動によるセッターインジェクションの設定
+entry.AddInjectionFanctor(
+    new BindFunctor(
+        new MemberFunctor(typeof(Foo).GetMethod("SetDependency2")),
+        new NotBoundArgument(0),
+        new TypedArgumentComponentProvider(container, typeof(IBar)),
+        1));
+
+// 手動による初期化メソッドの設定
+entry.AddInitializationFactor(
+    new BindFunctor(
+        new MemberFunctor(typeof(Foo).GetMethod("Initialize2")),
+        new NotBoundArgument(0),
+        2));
+
+container.Register(entry);
+
+Foo foo = (Foo)continer.GetComponent(typeof(Foo));
+</pre>
+            </p>
+      <h4 class="dtH4">必要条件</h4>
+      <p>
+        <b>名前空間: </b>
+        <a href="Kodama.DependencyInjection.Container.html">Kodama.DependencyInjection.Container</a>
+      </p>
+      <p>
+        <b>アセンブリ: </b>Kodama.DependencyInjection (Kodama.DependencyInjection.dll 内)
+					</p>
+      <h4 class="dtH4">参照</h4>
+      <p>
+        <a href="Kodama.DependencyInjection.Container.ComponentContainerImpl.html">ComponentContainerImpl クラス</a> | <a href="Kodama.DependencyInjection.Container.ComponentContainerImplMembers.html">ComponentContainerImpl メンバ</a> | <a href="Kodama.DependencyInjection.Container.html">Kodama.DependencyInjection.Container 名前空間</a></p>
+      <object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e" viewastext="true" style="display: none;">
+        <param name="Keyword" value="ComponentContainerImpl クラス, ComponentContainerImpl クラスについて">
+        </param>
+      </object>
+      <hr />
+      <div id="footer">
+        <p>
+          <a href="license.txt">Copyright (c) 2004 The Kodama Project. All rights reserved.</a>
+        </p>
+        <p>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

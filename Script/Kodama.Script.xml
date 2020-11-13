@@ -1,0 +1,1307 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Kodama.Script</name>
+    </assembly>
+    <members>
+        <member name="T:Kodama.Script.Engine.CodeDom.CSharpScript.CSharpScriptEngine">
+            <summary>
+            CSharpScriptエンジンです
+            </summary>
+            <remarks>
+            このクラスはCodeDomを利用しています。
+            極力Visual Studio for Applicationを利用したものではなく、こちらを利用して下さい。
+            </remarks>
+        </member>
+        <member name="T:Kodama.Script.Engine.IScriptEngine">
+            <summary>
+            スクリプトエンジンの基底インターフェイスです
+            </summary>
+            <remarks>
+            新たなスクリプト言語のサポートはこのインターフェイスを継承してください
+            </remarks>
+        </member>
+        <member name="M:Kodama.Script.Engine.IScriptEngine.AddReference(System.String)">
+            <summary>
+            スクリプトで参照するアセンブリを追加する
+            </summary>
+            <param name="assemblyName">スクリプトで参照するアセンブリ名</param>
+        </member>
+        <member name="M:Kodama.Script.Engine.IScriptEngine.AddGlobalIntstance(System.String,System.Object)">
+            <summary>
+            スクリプトからみえるグローバルなインスタンスを追加する
+            </summary>
+            <param name="name">スクリプトから参照するときにつかうインスタンス名</param>
+            <param name="obj">スクリプトに追加するグローバルなインスタンス</param>
+        </member>
+        <member name="M:Kodama.Script.Engine.IScriptEngine.AddScriptCodeFromFile(System.String)">
+            <summary>
+            スクリプトをファイルから読み出し、既にあるコードに追加する
+            </summary>
+            <param name="filename">スクリプトファイル名</param>
+        </member>
+        <member name="M:Kodama.Script.Engine.IScriptEngine.AddScriptCodeFromText(System.String,System.String)">
+            <summary>
+            テキストを既にあるコードに追加する
+            </summary>
+            <param name="name">スクリプト名</param>
+            <param name="code">追加するテキスト</param>
+        </member>
+        <member name="M:Kodama.Script.Engine.IScriptEngine.Compile">
+            <summary>
+            スクリプトをコンパイルする
+            </summary>
+        </member>
+        <member name="M:Kodama.Script.Engine.IScriptEngine.Run">
+            <summary>
+            スクリプトを実行する
+            </summary>
+        </member>
+        <member name="M:Kodama.Script.Engine.IScriptEngine.Stop">
+            <summary>
+            スクリプトの実行を停止する
+            </summary>
+        </member>
+        <member name="M:Kodama.Script.Engine.IScriptEngine.Close">
+            <summary>
+            スクリプトのリソースを開放し、スクリプトエンジンを無効にする
+            </summary>
+            <remarks>
+            つかい終わったスクリプトエンジンはこのメソッドを呼び出してください。
+            </remarks>
+        </member>
+        <member name="P:Kodama.Script.Engine.IScriptEngine.ScriptAssembly">
+            <summary>
+            スクリプトのアセンブリ
+            </summary>
+            <remarks>
+            これをつかってスクリプトのメタ情報を取得できる。
+            </remarks>
+        </member>
+        <member name="P:Kodama.Script.Engine.IScriptEngine.GenerateDebugInfo">
+            <summary>
+            デバッグ情報を生成するかどうか
+            </summary>
+        </member>
+        <member name="F:Kodama.Script.Engine.CodeDom.CSharpScript.CSharpScriptEngine.provider">
+            <summary>
+            CodeDomのコンパイラを提供
+            </summary>
+        </member>
+        <member name="F:Kodama.Script.Engine.CodeDom.CSharpScript.CSharpScriptEngine.scriptAssembly">
+            <summary>
+            スクリプトのアセンブリ
+            </summary>
+        </member>
+        <member name="F:Kodama.Script.Engine.CodeDom.CSharpScript.CSharpScriptEngine.generateDebugInfo">
+            <summary>
+            デバッグ情報を生成するかどうか
+            </summary>
+        </member>
+        <member name="F:Kodama.Script.Engine.CodeDom.CSharpScript.CSharpScriptEngine.referenceAssemblies">
+            <summary>
+            スクリプトが参照するアセンブリ
+            </summary>
+        </member>
+        <member name="F:Kodama.Script.Engine.CodeDom.CSharpScript.CSharpScriptEngine.scriptCode">
+            <summary>
+            スクリプトコード
+            </summary>
+        </member>
+        <member name="M:Kodama.Script.Engine.CodeDom.CSharpScript.CSharpScriptEngine.#ctor">
+            <summary>
+            コンストラクタ
+            </summary>
+        </member>
+        <member name="M:Kodama.Script.Engine.CodeDom.CSharpScript.CSharpScriptEngine.AddReference(System.String)">
+            <summary>
+            スクリプトで参照するアセンブリを追加する
+            </summary>
+            <remarks>
+            アセンブリの参照はコンパイル前に追加してください。
+            </remarks>
+            <param name="assemblyName">スクリプトで参照するアセンブリ名</param>
+        </member>
+        <member name="M:Kodama.Script.Engine.CodeDom.CSharpScript.CSharpScriptEngine.AddGlobalIntstance(System.String,System.Object)">
+            <summary>
+            スクリプトからみえるグローバルなインスタンスを追加する
+            </summary>
+            <remarks>
+            グローバルなインスタンスはコンパイル前に追加してください。
+            </remarks>
+            <param name="name">スクリプトから参照するときにつかうインスタンス名</param>
+            <param name="obj">スクリプトに追加するグローバルなインスタンス</param>
+            <exception cref="T:System.NotSupportedException">
+            CodeDomではグローバルなインスタンスをサポートしていないので必ずこの例外が発生します
+            </exception>
+        </member>
+        <member name="M:Kodama.Script.Engine.CodeDom.CSharpScript.CSharpScriptEngine.AddScriptCodeFromFile(System.String)">
+            <summary>
+            スクリプトをファイルから読み出し、既にあるコードに追加する
+            </summary>
+            <param name="filename">スクリプトファイル名</param>
+        </member>
+        <member name="M:Kodama.Script.Engine.CodeDom.CSharpScript.CSharpScriptEngine.AddScriptCodeFromText(System.String,System.String)">
+            <summary>
+            テキストを既にあるコードに追加する
+            </summary>
+            <param name="name">スクリプト名</param>
+            <param name="code">追加するテキスト</param>
+        </member>
+        <member name="M:Kodama.Script.Engine.CodeDom.CSharpScript.CSharpScriptEngine.Compile">
+            <summary>
+            スクリプトをコンパイルする
+            </summary>
+            <exception cref="T:Kodama.Script.Engine.CompileErrorException">
+            コンパイルエラーが発生した場合はこの例外を投げる
+            </exception>
+        </member>
+        <member name="M:Kodama.Script.Engine.CodeDom.CSharpScript.CSharpScriptEngine.Run">
+            <summary>
+            スクリプトを実行する
+            </summary>
+            <exception cref="T:Kodama.Script.Engine.ScriptEntryPointNotFoundException">
+            エントリーポイントがみつからない場合はこの例外を投げる
+            </exception>
+            <exception cref="T:Kodama.Script.Engine.NotCompiledException">
+            スクリプトがコンパイルされていない場合はこの例外を投げる
+            </exception>
+            <remarks>
+            スクリプトを実行するにはエントリーポイントが必要です。
+            エントリーポイントとはスクリプトの一番最初に起動する
+            メソッドのことをいいます。このエンジンでのC#Scriptの
+            エントリーポイントは、関数名が"Main"で引数なしの静的な
+            メソッドで、ScriptEntryPointAttribute属性がついているものとします。
+            </remarks>
+        </member>
+        <member name="M:Kodama.Script.Engine.CodeDom.CSharpScript.CSharpScriptEngine.Stop">
+            <summary>
+            スクリプトの実行を停止する
+            </summary>
+        </member>
+        <member name="M:Kodama.Script.Engine.CodeDom.CSharpScript.CSharpScriptEngine.Close">
+            <summary>
+            スクリプトのリソースを開放し、スクリプトエンジンを無効にする
+            </summary>
+            <remarks>
+            つかい終わったスクリプトエンジンはこのメソッドを呼び出してください。
+            </remarks>
+        </member>
+        <member name="M:Kodama.Script.Engine.CodeDom.CSharpScript.CSharpScriptEngine.FindEntryPoint">
+            <summary>
+            スクリプトからエントリーポイントを探す
+            </summary>
+            <returns>見つかったエントリーポイント</returns>
+            <exception cref="T:Kodama.Script.Engine.ScriptEntryPointNotFoundException">
+            エントリーポイントがみつからない場合はこの例外を投げる
+            </exception>
+            <remarks>
+            エントリーポイントとはスクリプトの一番最初に起動する
+            メソッドのことをいいます。このエンジンでのVBScriptの
+            エントリーポイントは、関数名が"Main"で引数なしの静的な
+            メソッドで、ScriptEntryPointAttribute属性がついているものとします。
+            </remarks>
+        </member>
+        <member name="P:Kodama.Script.Engine.CodeDom.CSharpScript.CSharpScriptEngine.ScriptAssembly">
+            <summary>
+            スクリプトのアセンブリを取得する
+            </summary>
+            <remarks>
+            これをつかってスクリプトのメタ情報を取得できる。
+            </remarks>
+        </member>
+        <member name="P:Kodama.Script.Engine.CodeDom.CSharpScript.CSharpScriptEngine.GenerateDebugInfo">
+            <summary>
+            デバッグ情報を生成するかどうか
+            </summary>
+        </member>
+        <member name="T:Kodama.Script.Engine.CodeDom.CSharpScript.CSharpScriptEngineFactory">
+            <summary>
+            CSharpScriptEngineを生成するファクトリークラスです
+            </summary>
+        </member>
+        <member name="T:Kodama.Script.Factory.IScriptEngineFactory">
+            <summary>
+            スクリプトエンジンのファクトリーインターフェイス
+            </summary>
+        </member>
+        <member name="M:Kodama.Script.Factory.IScriptEngineFactory.CanCompile(System.String)">
+            <summary>
+            指定されたファイルがコンパイル可能かチェックする
+            </summary>
+            <param name="filename">チェックするファイル名</param>
+            <returns>ファイルがコンパイル可能かどうか</returns>
+        </member>
+        <member name="M:Kodama.Script.Factory.IScriptEngineFactory.Create">
+            <summary>
+            スクリプトエンジンのインスタンスを生成する
+            </summary>
+            <returns>生成されたインスタンス</returns>
+        </member>
+        <member name="M:Kodama.Script.Factory.IScriptEngineFactory.CreateFromFile(System.String)">
+            <summary>
+            ファイルからスクリプトエンジンのインスタンスを生成する
+            </summary>
+            <param name="filename">スクリプトエンジンを生成するファイル名</param>
+            <returns>生成されたインスタンス</returns>
+        </member>
+        <member name="M:Kodama.Script.Engine.CodeDom.CSharpScript.CSharpScriptEngineFactory.CanCompile(System.String)">
+            <summary>
+            指定されたファイルがコンパイル可能かチェックする
+            </summary>
+            <param name="filename">チェックするファイル名</param>
+            <returns>ファイルがコンパイル可能かどうか</returns>
+        </member>
+        <member name="M:Kodama.Script.Engine.CodeDom.CSharpScript.CSharpScriptEngineFactory.Create">
+            <summary>
+            スクリプトエンジンのインスタンスを生成する
+            </summary>
+            <returns>生成されたインスタンス</returns>
+        </member>
+        <member name="M:Kodama.Script.Engine.CodeDom.CSharpScript.CSharpScriptEngineFactory.CreateFromFile(System.String)">
+            <summary>
+            ファイルからスクリプトエンジンのインスタンスを生成する
+            </summary>
+            <param name="filename">スクリプトエンジンを生成するファイル名</param>
+            <returns>生成されたインスタンス</returns>
+        </member>
+        <member name="T:Kodama.Script.Engine.CodeDom.JScript.JScriptEngine">
+            <summary>
+            JScriptエンジンです
+            </summary>
+            <remarks>
+            このクラスはCodeDomを利用しています。
+            極力Visual Studio for Applicationを利用したものではなく、こちらを利用して下さい。
+            </remarks>
+        </member>
+        <member name="F:Kodama.Script.Engine.CodeDom.JScript.JScriptEngine.provider">
+            <summary>
+            CodeDomのコンパイラを提供
+            </summary>
+        </member>
+        <member name="F:Kodama.Script.Engine.CodeDom.JScript.JScriptEngine.scriptAssembly">
+            <summary>
+            スクリプトのアセンブリ
+            </summary>
+        </member>
+        <member name="F:Kodama.Script.Engine.CodeDom.JScript.JScriptEngine.generateDebugInfo">
+            <summary>
+            デバッグ情報を生成するかどうか
+            </summary>
+        </member>
+        <member name="F:Kodama.Script.Engine.CodeDom.JScript.JScriptEngine.referenceAssemblies">
+            <summary>
+            スクリプトが参照するアセンブリ
+            </summary>
+        </member>
+        <member name="F:Kodama.Script.Engine.CodeDom.JScript.JScriptEngine.scriptCode">
+            <summary>
+            スクリプトコード
+            </summary>
+        </member>
+        <member name="M:Kodama.Script.Engine.CodeDom.JScript.JScriptEngine.#ctor">
+            <summary>
+            コンストラクタ
+            </summary>
+        </member>
+        <member name="M:Kodama.Script.Engine.CodeDom.JScript.JScriptEngine.AddReference(System.String)">
+            <summary>
+            スクリプトで参照するアセンブリを追加する
+            </summary>
+            <remarks>
+            アセンブリの参照はコンパイル前に追加してください。
+            </remarks>
+            <param name="assemblyName">スクリプトで参照するアセンブリ名</param>
+        </member>
+        <member name="M:Kodama.Script.Engine.CodeDom.JScript.JScriptEngine.AddGlobalIntstance(System.String,System.Object)">
+            <summary>
+            スクリプトからみえるグローバルなインスタンスを追加する
+            </summary>
+            <remarks>
+            グローバルなインスタンスはコンパイル前に追加してください。
+            </remarks>
+            <param name="name">スクリプトから参照するときにつかうインスタンス名</param>
+            <param name="obj">スクリプトに追加するグローバルなインスタンス</param>
+            <exception cref="T:System.NotSupportedException">
+            CodeDomではグローバルなインスタンスをサポートしていないので必ずこの例外が発生します
+            </exception>
+        </member>
+        <member name="M:Kodama.Script.Engine.CodeDom.JScript.JScriptEngine.AddScriptCodeFromFile(System.String)">
+            <summary>
+            スクリプトをファイルから読み出し、既にあるコードに追加する
+            </summary>
+            <param name="filename">スクリプトファイル名</param>
+        </member>
+        <member name="M:Kodama.Script.Engine.CodeDom.JScript.JScriptEngine.AddScriptCodeFromText(System.String,System.String)">
+            <summary>
+            テキストを既にあるコードに追加する
+            </summary>
+            <param name="name">スクリプト名</param>
+            <param name="code">追加するテキスト</param>
+        </member>
+        <member name="M:Kodama.Script.Engine.CodeDom.JScript.JScriptEngine.Compile">
+            <summary>
+            スクリプトをコンパイルする
+            </summary>
+            <exception cref="T:Kodama.Script.Engine.CompileErrorException">
+            コンパイルエラーが発生した場合はこの例外を投げる
+            </exception>
+        </member>
+        <member name="M:Kodama.Script.Engine.CodeDom.JScript.JScriptEngine.Run">
+            <summary>
+            スクリプトを実行する
+            </summary>
+            <exception cref="T:Kodama.Script.Engine.ScriptEntryPointNotFoundException">
+            エントリーポイントがみつからない場合はこの例外を投げる
+            </exception>
+            <exception cref="T:Kodama.Script.Engine.NotCompiledException">
+            スクリプトがコンパイルされていない場合はこの例外を投げる
+            </exception>
+        </member>
+        <member name="M:Kodama.Script.Engine.CodeDom.JScript.JScriptEngine.Stop">
+            <summary>
+            スクリプトの実行を停止する
+            </summary>
+        </member>
+        <member name="M:Kodama.Script.Engine.CodeDom.JScript.JScriptEngine.Close">
+            <summary>
+            スクリプトのリソースを開放し、スクリプトエンジンを無効にする
+            </summary>
+            <remarks>
+            つかい終わったスクリプトエンジンはこのメソッドを呼び出してください。
+            </remarks>
+        </member>
+        <member name="P:Kodama.Script.Engine.CodeDom.JScript.JScriptEngine.ScriptAssembly">
+            <summary>
+            スクリプトのアセンブリを取得する
+            </summary>
+            <remarks>
+            これをつかってスクリプトのメタ情報を取得できる。
+            </remarks>
+        </member>
+        <member name="P:Kodama.Script.Engine.CodeDom.JScript.JScriptEngine.GenerateDebugInfo">
+            <summary>
+            デバッグ情報を生成するかどうか
+            </summary>
+        </member>
+        <member name="T:Kodama.Script.Engine.CodeDom.JScript.JScriptEngineFactory">
+            <summary>
+            JScriptEngineを生成するファクトリークラスです
+            </summary>
+        </member>
+        <member name="M:Kodama.Script.Engine.CodeDom.JScript.JScriptEngineFactory.CanCompile(System.String)">
+            <summary>
+            指定されたファイルがコンパイル可能かチェックする
+            </summary>
+            <param name="filename">チェックするファイル名</param>
+            <returns>ファイルがコンパイル可能かどうか</returns>
+        </member>
+        <member name="M:Kodama.Script.Engine.CodeDom.JScript.JScriptEngineFactory.Create">
+            <summary>
+            スクリプトエンジンのインスタンスを生成する
+            </summary>
+            <returns>生成されたインスタンス</returns>
+        </member>
+        <member name="M:Kodama.Script.Engine.CodeDom.JScript.JScriptEngineFactory.CreateFromFile(System.String)">
+            <summary>
+            ファイルからスクリプトエンジンのインスタンスを生成する
+            </summary>
+            <param name="filename">スクリプトエンジンを生成するファイル名</param>
+            <returns>生成されたインスタンス</returns>
+        </member>
+        <member name="T:Kodama.Script.Engine.CodeDom.VBScript.VBScriptEngine">
+            <summary>
+            VBScriptエンジンです
+            </summary>
+            <remarks>
+            このクラスはCodeDomを利用しています。
+            極力Visual Studio for Applicationを利用したものではなく、こちらを利用して下さい。
+            </remarks>
+        </member>
+        <member name="F:Kodama.Script.Engine.CodeDom.VBScript.VBScriptEngine.provider">
+            <summary>
+            CodeDomのコンパイラを提供
+            </summary>
+        </member>
+        <member name="F:Kodama.Script.Engine.CodeDom.VBScript.VBScriptEngine.scriptAssembly">
+            <summary>
+            スクリプトのアセンブリ
+            </summary>
+        </member>
+        <member name="F:Kodama.Script.Engine.CodeDom.VBScript.VBScriptEngine.generateDebugInfo">
+            <summary>
+            デバッグ情報を生成するかどうか
+            </summary>
+        </member>
+        <member name="F:Kodama.Script.Engine.CodeDom.VBScript.VBScriptEngine.referenceAssemblies">
+            <summary>
+            スクリプトが参照するアセンブリ
+            </summary>
+        </member>
+        <member name="F:Kodama.Script.Engine.CodeDom.VBScript.VBScriptEngine.scriptCode">
+            <summary>
+            スクリプトコード
+            </summary>
+        </member>
+        <member name="M:Kodama.Script.Engine.CodeDom.VBScript.VBScriptEngine.#ctor">
+            <summary>
+            コンストラクタ
+            </summary>
+        </member>
+        <member name="M:Kodama.Script.Engine.CodeDom.VBScript.VBScriptEngine.AddReference(System.String)">
+            <summary>
+            スクリプトで参照するアセンブリを追加する
+            </summary>
+            <remarks>
+            アセンブリの参照はコンパイル前に追加してください。
+            </remarks>
+            <param name="assemblyName">スクリプトで参照するアセンブリ名</param>
+        </member>
+        <member name="M:Kodama.Script.Engine.CodeDom.VBScript.VBScriptEngine.AddGlobalIntstance(System.String,System.Object)">
+            <summary>
+            スクリプトからみえるグローバルなインスタンスを追加する
+            </summary>
+            <remarks>
+            グローバルなインスタンスはコンパイル前に追加してください。
+            </remarks>
+            <param name="name">スクリプトから参照するときにつかうインスタンス名</param>
+            <param name="obj">スクリプトに追加するグローバルなインスタンス</param>
+            <exception cref="T:System.NotSupportedException">
+            CodeDomではグローバルなインスタンスをサポートしていないので必ずこの例外が発生します
+            </exception>
+        </member>
+        <member name="M:Kodama.Script.Engine.CodeDom.VBScript.VBScriptEngine.AddScriptCodeFromFile(System.String)">
+            <summary>
+            スクリプトをファイルから読み出し、既にあるコードに追加する
+            </summary>
+            <param name="filename">スクリプトファイル名</param>
+        </member>
+        <member name="M:Kodama.Script.Engine.CodeDom.VBScript.VBScriptEngine.AddScriptCodeFromText(System.String,System.String)">
+            <summary>
+            テキストを既にあるコードに追加する
+            </summary>
+            <param name="name">スクリプト名</param>
+            <param name="code">追加するテキスト</param>
+        </member>
+        <member name="M:Kodama.Script.Engine.CodeDom.VBScript.VBScriptEngine.Compile">
+            <summary>
+            スクリプトをコンパイルする
+            </summary>
+            <exception cref="T:Kodama.Script.Engine.CompileErrorException">
+            コンパイルエラーが発生した場合はこの例外を投げる
+            </exception>
+        </member>
+        <member name="M:Kodama.Script.Engine.CodeDom.VBScript.VBScriptEngine.Run">
+            <summary>
+            スクリプトを実行する
+            </summary>
+            <exception cref="T:Kodama.Script.Engine.ScriptEntryPointNotFoundException">
+            エントリーポイントがみつからない場合はこの例外を投げる
+            </exception>
+            <exception cref="T:Kodama.Script.Engine.NotCompiledException">
+            スクリプトがコンパイルされていない場合はこの例外を投げる
+            </exception>
+            <remarks>
+            スクリプトを実行するにはエントリーポイントが必要です。
+            エントリーポイントとはスクリプトの一番最初に起動する
+            メソッドのことをいいます。このエンジンでのVBScriptの
+            エントリーポイントは、関数名が"Main"で引数なしの静的な
+            メソッドで、ScriptEntryPointAttribute属性がついているものとします。
+            </remarks>
+        </member>
+        <member name="M:Kodama.Script.Engine.CodeDom.VBScript.VBScriptEngine.Stop">
+            <summary>
+            スクリプトの実行を停止する
+            </summary>
+        </member>
+        <member name="M:Kodama.Script.Engine.CodeDom.VBScript.VBScriptEngine.Close">
+            <summary>
+            スクリプトのリソースを開放し、スクリプトエンジンを無効にする
+            </summary>
+            <remarks>
+            つかい終わったスクリプトエンジンはこのメソッドを呼び出してください。
+            </remarks>
+        </member>
+        <member name="M:Kodama.Script.Engine.CodeDom.VBScript.VBScriptEngine.FindEntryPoint">
+            <summary>
+            スクリプトからエントリーポイントを探す
+            </summary>
+            <returns>見つかったエントリーポイント</returns>
+            <exception cref="T:Kodama.Script.Engine.ScriptEntryPointNotFoundException">
+            エントリーポイントがみつからない場合はこの例外を投げる
+            </exception>
+            <remarks>
+            エントリーポイントとはスクリプトの一番最初に起動する
+            メソッドのことをいいます。このエンジンでのVBScriptの
+            エントリーポイントは、関数名が"Main"で引数なしの静的な
+            メソッドで、ScriptEntryPointAttribute属性がついているものとします。
+            </remarks>
+        </member>
+        <member name="P:Kodama.Script.Engine.CodeDom.VBScript.VBScriptEngine.ScriptAssembly">
+            <summary>
+            スクリプトのアセンブリを取得する
+            </summary>
+            <remarks>
+            これをつかってスクリプトのメタ情報を取得できる。
+            </remarks>
+        </member>
+        <member name="P:Kodama.Script.Engine.CodeDom.VBScript.VBScriptEngine.GenerateDebugInfo">
+            <summary>
+            デバッグ情報を生成するかどうか
+            </summary>
+        </member>
+        <member name="T:Kodama.Script.Engine.CodeDom.VBScript.VBScriptEngineFactory">
+            <summary>
+            VBScriptEngineを生成するファクトリークラスです
+            </summary>
+        </member>
+        <member name="M:Kodama.Script.Engine.CodeDom.VBScript.VBScriptEngineFactory.CanCompile(System.String)">
+            <summary>
+            指定されたファイルがコンパイル可能かチェックする
+            </summary>
+            <param name="filename">チェックするファイル名</param>
+            <returns>ファイルがコンパイル可能かどうか</returns>
+        </member>
+        <member name="M:Kodama.Script.Engine.CodeDom.VBScript.VBScriptEngineFactory.Create">
+            <summary>
+            スクリプトエンジンのインスタンスを生成する
+            </summary>
+            <returns>生成されたインスタンス</returns>
+        </member>
+        <member name="M:Kodama.Script.Engine.CodeDom.VBScript.VBScriptEngineFactory.CreateFromFile(System.String)">
+            <summary>
+            ファイルからスクリプトエンジンのインスタンスを生成する
+            </summary>
+            <param name="filename">スクリプトエンジンを生成するファイル名</param>
+            <returns>生成されたインスタンス</returns>
+        </member>
+        <member name="T:Kodama.Script.Engine.CodeDom.CodeDomCompileErrorException">
+            <summary>
+            スクリプトのコンパイルエラー例外
+            </summary>
+        </member>
+        <member name="T:Kodama.Script.Engine.CompileErrorException">
+            <summary>
+            スクリプトのコンパイルエラー例外
+            </summary>
+        </member>
+        <member name="M:Kodama.Script.Engine.CompileErrorException.#ctor">
+            <summary>
+            コンストラクタ
+            </summary>
+        </member>
+        <member name="M:Kodama.Script.Engine.CompileErrorException.GetCompileErrorInfos">
+            <summary>
+            コンパイルエラー情報を返す
+            </summary>
+            <returns>コンパイルエラー情報</returns>
+        </member>
+        <member name="F:Kodama.Script.Engine.CodeDom.CodeDomCompileErrorException.errors">
+            <summary>
+            コンパイルエラー
+            </summary>
+        </member>
+        <member name="M:Kodama.Script.Engine.CodeDom.CodeDomCompileErrorException.#ctor(System.CodeDom.Compiler.CompilerResults)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="results">CodeDomのコンパイル結果</param>
+        </member>
+        <member name="M:Kodama.Script.Engine.CodeDom.CodeDomCompileErrorException.GetCompileErrorInfos">
+            <summary>
+            コンパイルエラーの配列を返す
+            </summary>
+            <returns>コンパイルエラーの配列</returns>
+        </member>
+        <member name="T:Kodama.Script.Engine.Vsa.JScript.JScriptEngine">
+            <summary>
+            JScriptエンジンです
+            </summary>
+            <remarks>
+            このクラスはVisual Studio for Applicationを利用しています。
+            これは.NET Framework2.0ではObsoleteになるので、極力CodeDomを
+            利用したものを利用してください。
+            </remarks>
+        </member>
+        <member name="F:Kodama.Script.Engine.Vsa.JScript.JScriptEngine.site">
+            <summary>
+            IVsaSiteを実装する内部エンジン
+            </summary>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.JScript.JScriptEngine.#ctor">
+            <summary>
+            コンストラクタ
+            </summary>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.JScript.JScriptEngine.AddReference(System.String)">
+            <summary>
+            スクリプトで参照するアセンブリを追加する
+            </summary>
+            <remarks>
+            アセンブリの参照はコンパイル前に追加してください。
+            </remarks>
+            <param name="assemblyName">スクリプトで参照するアセンブリ名</param>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.JScript.JScriptEngine.AddGlobalIntstance(System.String,System.Object)">
+            <summary>
+            スクリプトからみえるグローバルなインスタンスを追加する
+            </summary>
+            <remarks>
+            グローバルなインスタンスはコンパイル前に追加してください。
+            </remarks>
+            <param name="name">スクリプトから参照するときにつかうインスタンス名</param>
+            <param name="obj">スクリプトに追加するグローバルなインスタンス</param>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.JScript.JScriptEngine.AddScriptCodeFromFile(System.String)">
+            <summary>
+            スクリプトをファイルから読み出し、既にあるコードに追加する
+            </summary>
+            <param name="filename">スクリプトファイル名</param>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.JScript.JScriptEngine.AddScriptCodeFromText(System.String,System.String)">
+            <summary>
+            テキストを既にあるコードに追加する
+            </summary>
+            <param name="name">スクリプト名</param>
+            <param name="code">追加するテキスト</param>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.JScript.JScriptEngine.Compile">
+            <summary>
+            スクリプトをコンパイルする
+            </summary>
+            <exception cref="T:Kodama.Script.Engine.Vsa.VsaCompileErrorException">
+            コンパイルエラーが発生した場合はこの例外を投げる
+            </exception>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.JScript.JScriptEngine.Run">
+            <summary>
+            スクリプトを実行する
+            </summary>
+            <exception cref="T:Kodama.Script.Engine.NotCompiledException">
+            スクリプトがコンパイルされていない場合はこの例外を投げる
+            </exception>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.JScript.JScriptEngine.Stop">
+            <summary>
+            スクリプトの実行を停止する
+            </summary>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.JScript.JScriptEngine.Close">
+            <summary>
+            スクリプトのリソースを開放し、スクリプトエンジンを無効にする
+            </summary>
+            <remarks>
+            つかい終わったスクリプトエンジンはこのメソッドを呼び出してください。
+            </remarks>
+        </member>
+        <member name="P:Kodama.Script.Engine.Vsa.JScript.JScriptEngine.ScriptAssembly">
+            <summary>
+            スクリプトのアセンブリ
+            </summary>
+            <remarks>
+            これをつかってスクリプトのメタ情報を取得できる。
+            </remarks>
+        </member>
+        <member name="P:Kodama.Script.Engine.Vsa.JScript.JScriptEngine.GenerateDebugInfo">
+            <summary>
+            デバッグ情報を生成するかどうか
+            </summary>
+        </member>
+        <member name="T:Kodama.Script.Engine.Vsa.JScript.JScriptEngine.JScriptVsaSite">
+            <summary>
+            IVsaSiteを継承するクラス。内部的に使用する
+            </summary>
+        </member>
+        <member name="F:Kodama.Script.Engine.Vsa.JScript.JScriptEngine.JScriptVsaSite.DEFAULT_ROOT_MONIKER">
+            <summary>
+            デフォルトルートモニカ
+            </summary>
+        </member>
+        <member name="F:Kodama.Script.Engine.Vsa.JScript.JScriptEngine.JScriptVsaSite.DEFAULT_ROOT_NAME_SPACE">
+            <summary>
+            デフォルト名前空間
+            </summary>
+        </member>
+        <member name="F:Kodama.Script.Engine.Vsa.JScript.JScriptEngine.JScriptVsaSite.vsaEngine">
+            <summary>
+            Vsaエンジン
+            </summary>
+        </member>
+        <member name="F:Kodama.Script.Engine.Vsa.JScript.JScriptEngine.JScriptVsaSite.errors">
+            <summary>
+            コンパイルエラー
+            </summary>
+        </member>
+        <member name="F:Kodama.Script.Engine.Vsa.JScript.JScriptEngine.JScriptVsaSite.globalObjectMap">
+            <summary>
+            スクリプトから参照できるグローバルオブジェクト
+            </summary>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.JScript.JScriptEngine.JScriptVsaSite.#ctor">
+            <summary>
+            コンストラクタ
+            </summary>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.JScript.JScriptEngine.JScriptVsaSite.AddReference(System.String)">
+            <summary>
+            スクリプトで参照するアセンブリを追加する
+            </summary>
+            <remarks>
+            アセンブリの参照はコンパイル前に追加してください。
+            </remarks>
+            <param name="assemblyName">スクリプトで参照するアセンブリ名</param>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.JScript.JScriptEngine.JScriptVsaSite.AddGlobalObject(System.String,System.Object)">
+            <summary>
+            スクリプトからみえるグローバルなインスタンスを追加する
+            </summary>
+            <remarks>
+            グローバルなインスタンスはコンパイル前に追加してください。
+            </remarks>
+            <param name="name">スクリプトから参照するときにつかうインスタンス名</param>
+            <param name="globalObject">スクリプトに追加するグローバルなインスタンス</param>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.JScript.JScriptEngine.JScriptVsaSite.AddScriptCode(System.String,System.String)">
+            <summary>
+            スクリプトコードを追加する
+            </summary>
+            <param name="name">スクリプトコード名</param>
+            <param name="code">追加するスクリプトコード</param>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.JScript.JScriptEngine.JScriptVsaSite.Compile">
+            <summary>
+            スクリプトをコンパイルする
+            </summary>
+            <exception cref="T:Kodama.Script.Engine.Vsa.VsaCompileErrorException">
+            コンパイルエラーが発生した場合はこの例外を投げる
+            </exception>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.JScript.JScriptEngine.JScriptVsaSite.Run">
+            <summary>
+            スクリプトを実行する
+            </summary>
+            <exception cref="T:Kodama.Script.Engine.NotCompiledException">
+            スクリプトがコンパイルされていない場合はこの例外を投げる
+            </exception>
+            <exception cref="T:Kodama.Script.Engine.ScriptEntryPointNotFoundException">
+            エントリーポイントがみつからない場合はこの例外を投げる
+            </exception>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.JScript.JScriptEngine.JScriptVsaSite.Stop">
+            <summary>
+            スクリプトの実行を停止する
+            </summary>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.JScript.JScriptEngine.JScriptVsaSite.Close">
+            <summary>
+            スクリプトのリソースを開放し、スクリプトエンジンを無効にする
+            </summary>
+            <remarks>
+            つかい終わったスクリプトエンジンはこのメソッドを呼び出してください。
+            </remarks>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.JScript.JScriptEngine.JScriptVsaSite.Microsoft#Vsa#IVsaSite#GetEventSourceInstance(System.String,System.String)">
+            <summary>
+            ???
+            </summary>
+            <param name="itemName">???</param>
+            <param name="eventSourceName">???</param>
+            <returns>???</returns>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.JScript.JScriptEngine.JScriptVsaSite.Microsoft#Vsa#IVsaSite#GetGlobalInstance(System.String)">
+            <summary>
+            スクリプトから見えるグローバルオブジェクトを取得する
+            </summary>
+            <param name="name">グローバルオブジェクトの名前</param>
+            <returns>グローバルオブジェクト</returns>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.JScript.JScriptEngine.JScriptVsaSite.Microsoft#Vsa#IVsaSite#Notify(System.String,System.Object)">
+            <summary>
+            ???
+            </summary>
+            <param name="notify">???</param>
+            <param name="info">???</param>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.JScript.JScriptEngine.JScriptVsaSite.Microsoft#Vsa#IVsaSite#GetCompiledState(System.Byte[]@,System.Byte[]@)">
+            <summary>
+            ???
+            </summary>
+            <param name="pe">???</param>
+            <param name="debugInfo">???</param>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.JScript.JScriptEngine.JScriptVsaSite.Microsoft#Vsa#IVsaSite#OnCompilerError(Microsoft.Vsa.IVsaError)">
+            <summary>
+            コンパイルエラー発生時に呼ばれるメソッド
+            </summary>
+            <param name="err">コンパイルエラー</param>
+            <returns>コンパイルエラーを継続して報告するかどうか</returns>
+        </member>
+        <member name="P:Kodama.Script.Engine.Vsa.JScript.JScriptEngine.JScriptVsaSite.ScriptAssembly">
+            <summary>
+            スクリプトのアセンブリ
+            </summary>
+            <remarks>
+            これをつかってスクリプトのメタ情報を取得できる
+            </remarks>
+        </member>
+        <member name="P:Kodama.Script.Engine.Vsa.JScript.JScriptEngine.JScriptVsaSite.GenerateDebugInfo">
+            <summary>
+            デバッグ情報を生成するかどうか
+            </summary>
+        </member>
+        <member name="T:Kodama.Script.Engine.Vsa.JScript.JScriptEngineFactory">
+            <summary>
+            JScriptEngineを生成するファクトリークラスです
+            </summary>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.JScript.JScriptEngineFactory.CanCompile(System.String)">
+            <summary>
+            指定されたファイルがコンパイル可能かチェックする
+            </summary>
+            <param name="filename">チェックするファイル名</param>
+            <returns>ファイルがコンパイル可能かどうか</returns>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.JScript.JScriptEngineFactory.Create">
+            <summary>
+            スクリプトエンジンのインスタンスを生成する
+            </summary>
+            <returns>生成されたインスタンス</returns>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.JScript.JScriptEngineFactory.CreateFromFile(System.String)">
+            <summary>
+            ファイルからスクリプトエンジンのインスタンスを生成する
+            </summary>
+            <param name="filename">スクリプトエンジンを生成するファイル名</param>
+            <returns>生成されたインスタンス</returns>
+        </member>
+        <member name="T:Kodama.Script.Engine.Vsa.VBScript.VBScriptEngine">
+            <summary>
+            VBScriptエンジンです
+            </summary>
+            <remarks>
+            このクラスはVisual Studio for Applicationを利用しています。
+            これは.NET Framework2.0ではObsoleteになるので、極力CodeDomを
+            利用したものを利用してください。
+            </remarks>
+        </member>
+        <member name="F:Kodama.Script.Engine.Vsa.VBScript.VBScriptEngine.site">
+            <summary>
+            IVsaSiteを実装する内部エンジン
+            </summary>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.VBScript.VBScriptEngine.#ctor">
+            <summary>
+            コンストラクタ
+            </summary>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.VBScript.VBScriptEngine.AddReference(System.String)">
+            <summary>
+            スクリプトで参照するアセンブリを追加する
+            </summary>
+            <remarks>
+            アセンブリの参照はコンパイル前に追加してください。
+            </remarks>
+            <param name="assemblyName">スクリプトで参照するアセンブリ名</param>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.VBScript.VBScriptEngine.AddGlobalIntstance(System.String,System.Object)">
+            <summary>
+            スクリプトからみえるグローバルなインスタンスを追加する
+            </summary>
+            <remarks>
+            グローバルなインスタンスはコンパイル前に追加してください。
+            </remarks>
+            <param name="name">スクリプトから参照するときにつかうインスタンス名</param>
+            <param name="obj">スクリプトに追加するグローバルなインスタンス</param>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.VBScript.VBScriptEngine.AddScriptCodeFromFile(System.String)">
+            <summary>
+            スクリプトをファイルから読み出し、既にあるコードに追加する
+            </summary>
+            <param name="filename">スクリプトファイル名</param>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.VBScript.VBScriptEngine.AddScriptCodeFromText(System.String,System.String)">
+            <summary>
+            テキストを既にあるコードに追加する
+            </summary>
+            <param name="name">スクリプト名</param>
+            <param name="code">追加するテキスト</param>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.VBScript.VBScriptEngine.Compile">
+            <summary>
+            スクリプトをコンパイルする
+            </summary>
+            <exception cref="T:Kodama.Script.Engine.Vsa.VsaCompileErrorException">
+            コンパイルエラーが発生した場合はこの例外を投げる
+            </exception>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.VBScript.VBScriptEngine.Run">
+            <summary>
+            スクリプトを実行する
+            </summary>
+            <exception cref="T:Kodama.Script.Engine.ScriptEntryPointNotFoundException">
+            エントリーポイントがみつからない場合はこの例外を投げる
+            </exception>
+            <exception cref="T:Kodama.Script.Engine.NotCompiledException">
+            スクリプトがコンパイルされていない場合はこの例外を投げる
+            </exception>
+            <remarks>
+            スクリプトを実行するにはエントリーポイントが必要です。
+            エントリーポイントとはスクリプトの一番最初に起動する
+            メソッドのことをいいます。このエンジンでのVBScriptの
+            エントリーポイントは、関数名が"Main"で引数なしの静的な
+            メソッドで、ScriptEntryPointAttribute属性がついているものとします。
+            </remarks>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.VBScript.VBScriptEngine.Stop">
+            <summary>
+            スクリプトの実行を停止する
+            </summary>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.VBScript.VBScriptEngine.Close">
+            <summary>
+            スクリプトのリソースを開放し、スクリプトエンジンを無効にする
+            </summary>
+            <remarks>
+            つかい終わったスクリプトエンジンはこのメソッドを呼び出してください。
+            </remarks>
+        </member>
+        <member name="P:Kodama.Script.Engine.Vsa.VBScript.VBScriptEngine.ScriptAssembly">
+            <summary>
+            スクリプトのアセンブリを取得する
+            </summary>
+            <remarks>
+            これをつかってスクリプトのメタ情報を取得できる。
+            </remarks>
+        </member>
+        <member name="P:Kodama.Script.Engine.Vsa.VBScript.VBScriptEngine.GenerateDebugInfo">
+            <summary>
+            デバッグ情報を生成するかどうか
+            </summary>
+        </member>
+        <member name="T:Kodama.Script.Engine.Vsa.VBScript.VBScriptEngine.VBScriptVsaSite">
+            <summary>
+            IVsaSiteを継承するクラス。内部的に使用する
+            </summary>
+        </member>
+        <member name="F:Kodama.Script.Engine.Vsa.VBScript.VBScriptEngine.VBScriptVsaSite.DEFAULT_ROOT_MONIKER">
+            <summary>
+            デフォルトルートモニカ
+            </summary>
+        </member>
+        <member name="F:Kodama.Script.Engine.Vsa.VBScript.VBScriptEngine.VBScriptVsaSite.DEFAULT_ROOT_NAME_SPACE">
+            <summary>
+            デフォルトルート名前空間
+            </summary>
+        </member>
+        <member name="F:Kodama.Script.Engine.Vsa.VBScript.VBScriptEngine.VBScriptVsaSite.vsaEngine">
+            <summary>
+            Vsaエンジン
+            </summary>
+        </member>
+        <member name="F:Kodama.Script.Engine.Vsa.VBScript.VBScriptEngine.VBScriptVsaSite.errors">
+            <summary>
+            コンパイルエラー
+            </summary>
+        </member>
+        <member name="F:Kodama.Script.Engine.Vsa.VBScript.VBScriptEngine.VBScriptVsaSite.globalObjectMap">
+            <summary>
+            スクリプトから参照できるグローバルオブジェクト
+            </summary>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.VBScript.VBScriptEngine.VBScriptVsaSite.#ctor">
+            <summary>
+            コンストラクタ
+            </summary>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.VBScript.VBScriptEngine.VBScriptVsaSite.AddReference(System.String)">
+            <summary>
+            スクリプトで参照するアセンブリを追加する
+            </summary>
+            <remarks>
+            アセンブリの参照はコンパイル前に追加してください。
+            </remarks>
+            <param name="assemblyName">スクリプトで参照するアセンブリ名</param>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.VBScript.VBScriptEngine.VBScriptVsaSite.AddGlobalObject(System.String,System.Object)">
+            <summary>
+            スクリプトからみえるグローバルなインスタンスを追加する
+            </summary>
+            <remarks>
+            グローバルなインスタンスはコンパイル前に追加してください。
+            </remarks>
+            <param name="name">スクリプトから参照するときにつかうインスタンス名</param>
+            <param name="globalObject">スクリプトに追加するグローバルなインスタンス</param>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.VBScript.VBScriptEngine.VBScriptVsaSite.AddScriptCode(System.String,System.String)">
+            <summary>
+            スクリプトコードを追加する
+            </summary>
+            <param name="name">スクリプトコード名</param>
+            <param name="code">追加するスクリプトコード</param>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.VBScript.VBScriptEngine.VBScriptVsaSite.Compile">
+            <summary>
+            スクリプトをコンパイルする
+            </summary>
+            <exception cref="T:Kodama.Script.Engine.Vsa.VsaCompileErrorException">
+            コンパイルエラーが発生した場合はこの例外を投げる
+            </exception>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.VBScript.VBScriptEngine.VBScriptVsaSite.Run">
+            <summary>
+            スクリプトを実行する
+            </summary>
+            <exception cref="T:Kodama.Script.Engine.ScriptEntryPointNotFoundException">
+            エントリーポイントがみつからない場合はこの例外を投げる
+            </exception>
+            <exception cref="T:Kodama.Script.Engine.NotCompiledException">
+            スクリプトがコンパイルされていない場合はこの例外を投げる
+            </exception>
+            <exception cref="T:Kodama.Script.Engine.ScriptEntryPointNotFoundException">
+            エントリーポイントがみつからない場合はこの例外を投げる
+            </exception>
+            <remarks>
+            スクリプトを実行するにはエントリーポイントが必要です。
+            エントリーポイントとはスクリプトの一番最初に起動する
+            メソッドのことをいいます。このエンジンでのVBScriptの
+            エントリーポイントは、関数名が"Main"で引数なしの静的な
+            メソッドで、ScriptEntryPointAttribute属性がついているものとします。
+            </remarks>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.VBScript.VBScriptEngine.VBScriptVsaSite.Stop">
+            <summary>
+            スクリプトの実行を停止する
+            </summary>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.VBScript.VBScriptEngine.VBScriptVsaSite.Close">
+            <summary>
+            スクリプトのリソースを開放し、スクリプトエンジンを無効にする
+            </summary>
+            <remarks>
+            つかい終わったスクリプトエンジンはこのメソッドを呼び出してください。
+            </remarks>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.VBScript.VBScriptEngine.VBScriptVsaSite.FindEntryPoint">
+            <summary>
+            スクリプトからエントリーポイントを探す
+            </summary>
+            <returns>見つかったエントリーポイント</returns>
+            <exception cref="T:Kodama.Script.Engine.ScriptEntryPointNotFoundException">
+            エントリーポイントがみつからない場合はこの例外を投げる
+            </exception>
+            <remarks>
+            エントリーポイントとはスクリプトの一番最初に起動する
+            メソッドのことをいいます。このエンジンでのVBScriptの
+            エントリーポイントは、関数名が"Main"で引数なしの静的な
+            メソッドで、ScriptEntryPointAttribute属性がついているものとします。
+            </remarks>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.VBScript.VBScriptEngine.VBScriptVsaSite.Microsoft#Vsa#IVsaSite#GetGlobalInstance(System.String)">
+            <summary>
+            スクリプトから見えるグローバルオブジェクトを取得する
+            </summary>
+            <param name="name">グローバルオブジェクトの名前</param>
+            <returns>グローバルオブジェクト</returns>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.VBScript.VBScriptEngine.VBScriptVsaSite.Microsoft#Vsa#IVsaSite#GetEventSourceInstance(System.String,System.String)">
+            <summary>
+            ???
+            </summary>
+            <param name="itemName">???</param>
+            <param name="eventSourceName">???</param>
+            <returns>???</returns>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.VBScript.VBScriptEngine.VBScriptVsaSite.Microsoft#Vsa#IVsaSite#Notify(System.String,System.Object)">
+            <summary>
+            ???
+            </summary>
+            <param name="notify">???</param>
+            <param name="info">???</param>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.VBScript.VBScriptEngine.VBScriptVsaSite.Microsoft#Vsa#IVsaSite#GetCompiledState(System.Byte[]@,System.Byte[]@)">
+            <summary>
+            ???
+            </summary>
+            <param name="pe">???</param>
+            <param name="debugInfo">???</param>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.VBScript.VBScriptEngine.VBScriptVsaSite.Microsoft#Vsa#IVsaSite#OnCompilerError(Microsoft.Vsa.IVsaError)">
+            <summary>
+            コンパイルエラー発生時に呼ばれるメソッド
+            </summary>
+            <param name="err">コンパイルエラー</param>
+            <returns>コンパイルエラーを継続して報告するかどうか</returns>
+        </member>
+        <member name="P:Kodama.Script.Engine.Vsa.VBScript.VBScriptEngine.VBScriptVsaSite.ScriptAssembly">
+            <summary>
+            スクリプトのアセンブリ
+            </summary>
+            <remarks>
+            これをつかってスクリプトのメタ情報を取得できる
+            </remarks>
+        </member>
+        <member name="P:Kodama.Script.Engine.Vsa.VBScript.VBScriptEngine.VBScriptVsaSite.GenerateDebugInfo">
+            <summary>
+            デバッグ情報を生成するかどうか
+            </summary>
+        </member>
+        <member name="T:Kodama.Script.Engine.Vsa.VBScript.VBScriptEngineFactory">
+            <summary>
+            VBScriptEngineを生成するファクトリークラスです
+            </summary>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.VBScript.VBScriptEngineFactory.CanCompile(System.String)">
+            <summary>
+            指定されたファイルがコンパイル可能かチェックする
+            </summary>
+            <param name="filename">チェックするファイル名</param>
+            <returns>ファイルがコンパイル可能かどうか</returns>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.VBScript.VBScriptEngineFactory.Create">
+            <summary>
+            スクリプトエンジンのインスタンスを生成する
+            </summary>
+            <returns>生成されたインスタンス</returns>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.VBScript.VBScriptEngineFactory.CreateFromFile(System.String)">
+            <summary>
+            ファイルからスクリプトエンジンのインスタンスを生成する
+            </summary>
+            <param name="filename">スクリプトエンジンを生成するファイル名</param>
+            <returns>生成されたインスタンス</returns>
+        </member>
+        <member name="T:Kodama.Script.Engine.Vsa.VsaCompileErrorException">
+            <summary>
+            スクリプトのコンパイルエラー例外
+            </summary>
+        </member>
+        <member name="F:Kodama.Script.Engine.Vsa.VsaCompileErrorException.errors">
+            <summary>
+            コンパイルエラー
+            </summary>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.VsaCompileErrorException.#ctor(Microsoft.Vsa.IVsaError[])">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="vsaErrs">IVsaSiteが報告したコンパイルエラー</param>
+        </member>
+        <member name="M:Kodama.Script.Engine.Vsa.VsaCompileErrorException.GetCompileErrorInfos">
+            <summary>
+            コンパイルエラーの配列を返す
+            </summary>
+            <returns>コンパイルエラーの配列</returns>
+        </member>
+        <member name="T:Kodama.Script.Engine.CompileErrorInfo">
+            <summary>
+            コンパイルエラー情報です
+            </summary>
+        </member>
+        <member name="F:Kodama.Script.Engine.CompileErrorInfo.sourceName">
+            <summary>
+            エラーの発生したソース名
+            </summary>
+        </member>
+        <member name="F:Kodama.Script.Engine.CompileErrorInfo.description">
+            <summary>
+            エラーの説明文
+            </summary>
+        </member>
+        <member name="F:Kodama.Script.Engine.CompileErrorInfo.errorLine">
+            <summary>
+            エラーの発生した行
+            </summary>
+        </member>
+        <member name="F:Kodama.Script.Engine.CompileErrorInfo.errorText">
+            <summary>
+            エラーの発生した行のテキスト
+            </summary>
+        </member>
+        <member name="M:Kodama.Script.Engine.CompileErrorInfo.#ctor(System.String,System.String,System.Int32,System.String)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="name">ソース名</param>
+            <param name="desc">エラーの説明文</param>
+            <param name="text">エラーの発生した行のテキスト</param>
+            <param name="line">エラーの発生した行</param>
+        </member>
+        <member name="P:Kodama.Script.Engine.CompileErrorInfo.SourceName">
+            <summary>
+            エラーの発生したソース名
+            </summary>
+        </member>
+        <member name="P:Kodama.Script.Engine.CompileErrorInfo.Description">
+            <summary>
+            エラーの説明文
+            </summary>
+        </member>
+        <member name="P:Kodama.Script.Engine.CompileErrorInfo.ErrorLine">
+            <summary>
+            エラーの発生した行
+            </summary>
+        </member>
+        <member name="P:Kodama.Script.Engine.CompileErrorInfo.ErrorText">
+            <summary>
+            エラーの発生した行のテキスト
+            </summary>
+        </member>
+        <member name="T:Kodama.Script.Engine.NotCompiledException">
+            <summary>
+            スクリプトがコンパイルされていないのに実行されようとした場合に発生する例外
+            </summary>
+        </member>
+        <member name="M:Kodama.Script.Engine.NotCompiledException.#ctor">
+            <summary>
+            コンストラクタ
+            </summary>
+        </member>
+        <member name="T:Kodama.Script.Engine.ScriptEntryPointAttribute">
+            <summary>
+            スクリプトのエントリーポイントに付ける属性
+            </summary>
+        </member>
+        <member name="T:Kodama.Script.Engine.ScriptEntryPointNotFoundException">
+            <summary>
+            スクリプトのエントリーポイント(Main関数)が見つからない場合に発生する例外
+            </summary>
+        </member>
+        <member name="M:Kodama.Script.Engine.ScriptEntryPointNotFoundException.#ctor">
+            <summary>
+            コンストラクタ
+            </summary>
+        </member>
+        <member name="T:Kodama.Script.Expression.Evaluator">
+            <summary>
+            JScriptで記述された式を評価します
+            </summary>
+            <remarks>
+            このクラスをビルドする前に、先にKodama.Script.Expression.InternalEvaluatorを
+            ビルドする必要があります。
+            </remarks>
+        </member>
+        <member name="M:Kodama.Script.Expression.Evaluator.Eval(System.String,System.Boolean)">
+            <summary>
+            JScriptで記述された式を評価します
+            </summary>
+            <param name="expression">評価する式</param>
+            <param name="isUnsafe">制限付きのセキュリティコンテキストで実行されないかどうか</param>
+        </member>
+        <member name="M:Kodama.Script.Expression.Evaluator.Eval(System.String)">
+            <summary>
+            JScriptで記述された式を評価します
+            </summary>
+            <param name="expression">評価する式</param>
+        </member>
+        <member name="T:Kodama.Script.Factory.NotSupportedScriptException">
+            <summary>
+            サポートしていないスクリプト形式の場合に発生する例外
+            </summary>
+        </member>
+        <member name="M:Kodama.Script.Factory.NotSupportedScriptException.#ctor">
+            <summary>
+            コンストラクタ
+            </summary>
+        </member>
+    </members>
+</doc>

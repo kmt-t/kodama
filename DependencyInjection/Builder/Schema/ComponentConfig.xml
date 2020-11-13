@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="shift_jis"?>
+<componentConfig>
+    <include path="poge.xml"/>
+    <assembly name="system.dll"/>
+    <assembly name="Kodama.Script.dll"/>
+    <remotingConfig path="assembyRemoting\config.xml"/>
+    <componentAutoDiscovery category="*"/>
+        <searchPath path="AutoDiscovery\*.dll"/>
+    </assemblyAutoDiscovery>
+    <aspect interceptor="HogeInterceptor" type="attribute" pointcut="HogeAttribute"/>
+    <aspect interceptor="HogeInterceptor" type="signature" pointcut=".*Method"/>
+    <component class="Foo" primary="IFoo" name="Hoge" instance="singleton">
+        <constructor>
+            <argument><injectionAuto/></argument>
+            <argument><injectionName name="Bar"/></argument>
+            <argument><injectionType class="Boo"/></argument>
+            <argument><expression>10+1</expression></argument>
+        </constructor>
+        <method>
+            <argument><injectionAuto/></argument>
+            <argument><injectionName name="Bar"/></argument>
+            <argument><injectionType class="Boo"/></argument>
+            <argument><expression>10+1</expression></argument>
+        </method>
+        <initialize>
+            <argument><expression>10+1</expression></argument>
+        </initialize>
+        <aspect interceptor="HogeInterceptor" type="attribute" pointcut="HogeAttribute"/>
+        <aspect interceptor="HogeInterceptor" type="signature" pointcut=".*Method"/>
+    </component>
+</componentConfig>

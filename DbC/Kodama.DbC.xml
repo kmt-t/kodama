@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Kodama.DbC</name>
+    </assembly>
+    <members>
+        <member name="T:Kodama.DbC.Constraint.ConstraintInterceptor">
+            <summary>
+            DbCを検査する割り込み処理
+            </summary>
+        </member>
+        <member name="M:Kodama.DbC.Constraint.ConstraintInterceptor.Invoke(Kodama.Aop.JoinPoint.MethodInvocation,System.Object[]@)">
+            <summary>
+            JoinPointが呼び出されると、このメソッドが割り込みます
+            </summary>
+            <param name="invocation">呼び出されたメソッド</param>
+            <param name="outArguments">メソッドのout引数</param>
+            <returns>メソッドの戻り値</returns>
+        </member>
+    </members>
+</doc>

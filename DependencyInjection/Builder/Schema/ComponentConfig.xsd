@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="componentConfig" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:simpleType name="filterType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="attribute" />
+            <xs:enumeration value="name" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="aspectType">
+        <xs:attribute name="interceptor" type="xs:string" use="required" />
+        <xs:attribute name="classFilterType" type="filterType" default="name" />
+        <xs:attribute name="classFilter" type="xs:string" use="required" />
+        <xs:attribute name="methodFilterType" type="filterType" default="name" />
+        <xs:attribute name="methodFilter" type="xs:string" use="required" />
+    </xs:complexType>
+    <xs:complexType name="componentAspectType">
+        <xs:attribute name="interceptor" type="xs:string" use="required" />
+        <xs:attribute name="methodFilterType" type="filterType" default="name" />
+        <xs:attribute name="methodFilter" type="xs:string" use="required" />
+    </xs:complexType>
+    <xs:simpleType name="instanceType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="singleton" />
+            <xs:enumeration value="prototype" />
+            <xs:enumeration value="outer" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="injectorArgument">
+        <xs:choice>
+            <xs:element name="injectionType" minOccurs="0">
+                <xs:complexType>
+                    <xs:attribute name="class" type="xs:string" use="required" />
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="injectionName" minOccurs="0">
+                <xs:complexType>
+                    <xs:attribute name="name" type="xs:string" use="required" />
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="expression" type="xs:string" minOccurs="0" />
+        </xs:choice>
+    </xs:complexType>
+    <xs:complexType name="initializerArgument">
+        <xs:choice>
+            <xs:element name="expression" type="xs:string" minOccurs="1" />
+        </xs:choice>
+    </xs:complexType>
+    <xs:element name="componentConfig" msdata:IsDataSet="true" msdata:Locale="ja-JP">
+        <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="include" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:attribute name="path" type="xs:string" use="required" />
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="assembly" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:attribute name="name" type="xs:string" use="required" />
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="remotingConfig" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:attribute name="path" type="xs:string" use="required" />
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="autoDiscovery" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:choice minOccurs="0" maxOccurs="unbounded">
+                            <xs:element name="searchPath" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:attribute name="path" type="xs:string" use="required" />
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                        <xs:attribute name="category" type="xs:string" use="required" />
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="aspect" type="aspectType" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element name="component">
+                    <xs:complexType>
+                        <xs:choice minOccurs="0" maxOccurs="unbounded">
+                            <xs:element name="aspect" type="componentAspectType" minOccurs="0" maxOccurs="unbounded" />
+                            <xs:element name="constructor" minOccurs="0" maxOccurs="1">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="argument" type="injectorArgument" minOccurs="0" maxOccurs="unbounded" />
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="method" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="argument" type="injectorArgument" minOccurs="0" maxOccurs="unbounded" />
+                                    </xs:sequence>
+                                    <xs:attribute name="name" type="xs:string" use="required" />
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="initialize" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="argument" type="initializerArgument" minOccurs="0" maxOccurs="unbounded" />
+                                    </xs:sequence>
+                                    <xs:attribute name="name" type="xs:string" use="required" />
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                        <xs:attribute name="class" type="xs:string" use="required" />
+                        <xs:attribute name="primary" type="xs:string" use="optional" />
+                        <xs:attribute name="name" type="xs:string" use="optional" />
+                        <xs:attribute name="instance" type="instanceType" use="optional" default="prototype" />
+                    </xs:complexType>
+                </xs:element>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

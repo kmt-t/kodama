@@ -1,0 +1,1664 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Kodama.DependencyInjection</name>
+    </assembly>
+    <members>
+        <member name="T:Kodama.DependencyInjection.Builder.Schema.componentConfig">
+            <remarks/>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Builder.Schema.componentConfig.Items">
+            <remarks/>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Builder.Schema.componentConfigInclude">
+            <remarks/>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Builder.Schema.componentConfigInclude.path">
+            <remarks/>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Builder.Schema.initializerArgument">
+            <remarks/>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Builder.Schema.initializerArgument.Item">
+            <remarks/>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Builder.Schema.componentConfigComponentInitialize">
+            <remarks/>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Builder.Schema.componentConfigComponentInitialize.argument">
+            <remarks/>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Builder.Schema.componentConfigComponentInitialize.name">
+            <remarks/>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Builder.Schema.componentConfigComponentMethod">
+            <remarks/>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Builder.Schema.componentConfigComponentMethod.argument">
+            <remarks/>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Builder.Schema.componentConfigComponentMethod.name">
+            <remarks/>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Builder.Schema.injectorArgument">
+            <remarks/>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Builder.Schema.injectorArgument.Item">
+            <remarks/>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Builder.Schema.injectorArgumentInjectionName">
+            <remarks/>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Builder.Schema.injectorArgumentInjectionName.name">
+            <remarks/>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Builder.Schema.injectorArgumentInjectionType">
+            <remarks/>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Builder.Schema.injectorArgumentInjectionType.class">
+            <remarks/>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Builder.Schema.componentAspectType">
+            <remarks/>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Builder.Schema.componentAspectType.interceptor">
+            <remarks/>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Builder.Schema.componentAspectType.methodFilterType">
+            <remarks/>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Builder.Schema.componentAspectType.methodFilter">
+            <remarks/>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Builder.Schema.filterType">
+            <remarks/>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Builder.Schema.filterType.attribute">
+            <remarks/>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Builder.Schema.filterType.name">
+            <remarks/>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Builder.Schema.componentConfigComponent">
+            <remarks/>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Builder.Schema.componentConfigComponent.Items">
+            <remarks/>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Builder.Schema.componentConfigComponent.class">
+            <remarks/>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Builder.Schema.componentConfigComponent.primary">
+            <remarks/>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Builder.Schema.componentConfigComponent.name">
+            <remarks/>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Builder.Schema.componentConfigComponent.instance">
+            <remarks/>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Builder.Schema.instanceType">
+            <remarks/>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Builder.Schema.instanceType.singleton">
+            <remarks/>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Builder.Schema.instanceType.prototype">
+            <remarks/>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Builder.Schema.instanceType.outer">
+            <remarks/>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Builder.Schema.aspectType">
+            <remarks/>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Builder.Schema.aspectType.interceptor">
+            <remarks/>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Builder.Schema.aspectType.classFilterType">
+            <remarks/>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Builder.Schema.aspectType.classFilter">
+            <remarks/>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Builder.Schema.aspectType.methodFilterType">
+            <remarks/>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Builder.Schema.aspectType.methodFilter">
+            <remarks/>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Builder.Schema.componentConfigAutoDiscoverySearchPath">
+            <remarks/>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Builder.Schema.componentConfigAutoDiscoverySearchPath.path">
+            <remarks/>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Builder.Schema.componentConfigAutoDiscovery">
+            <remarks/>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Builder.Schema.componentConfigAutoDiscovery.Items">
+            <remarks/>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Builder.Schema.componentConfigAutoDiscovery.category">
+            <remarks/>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Builder.Schema.componentConfigRemotingConfig">
+            <remarks/>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Builder.Schema.componentConfigRemotingConfig.path">
+            <remarks/>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Builder.Schema.componentConfigAssembly">
+            <remarks/>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Builder.Schema.componentConfigAssembly.name">
+            <remarks/>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Builder.AutoComponentContainerBuilder">
+            <summary>
+            自動的に、DependencyInjectionコンテナを生成して
+            コンポーネントを登録し、そのインスタンスを返すビルダ
+            </summary>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Builder.IComponentContainerBuilder">
+            <summary>
+            DependencyInjectionコンテナを生成し、それにコンポーネントを登録し、そのインスタンスを返すビルダ
+            </summary>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Builder.IComponentContainerBuilder.Build">
+            <summary>
+            DependencyInjectionコンテナを生成し、それにコンポーネントを登録し、そのインスタンスを返す
+            </summary>
+            <returns>生成されたDependencyInjectionコンテナ</returns>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Builder.AutoComponentContainerBuilder.componentCategory">
+            <summary>
+            自動登録するコンポーネントのカテゴリ
+            </summary>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Builder.AutoComponentContainerBuilder.assemblies">
+            <summary>
+            自動登録されるアセンブリ
+            </summary>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Builder.AutoComponentContainerBuilder.AddAssemblyFile(System.Reflection.AssemblyName)">
+            <summary>
+            自動登録されるアセンブリを追加する
+            </summary>
+            <param name="assemblyName">自動登録するアセンブリの完全名</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Builder.AutoComponentContainerBuilder.AddAssemblyFile(System.String)">
+            <summary>
+            自動登録されるアセンブリを追加する
+            </summary>
+            <param name="filename">自動登録するアセンブリのファイル名</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Builder.AutoComponentContainerBuilder.AddAssemblyFolder(System.String)">
+            <summary>
+            自動登録されるアセンブリを追加する
+            </summary>
+            <param name="folder">自動登録するアセンブリが含まれるフォルダ</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Builder.AutoComponentContainerBuilder.RemotingConfigure(System.String)">
+            <summary>
+            自動登録されるリモーティングオブジェクトを含むアセンブリを追加する
+            </summary>
+            <param name="filename">リモーティングオブジェクトについて記述される設定ファイルのパス</param>
+            <seealso cref="T:System.Runtime.Remoting.RemotingConfiguration">RemotingConfigurationクラス</seealso>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Builder.AutoComponentContainerBuilder.Build">
+            <summary>
+            自動的に、DependencyInjectionコンテナを生成して
+            コンポーネントを登録し、そのインスタンスを返す
+            </summary>
+            <returns>生成されたDependencyInjectionコンテナ</returns>
+        </member>
+        <member name="P:Kodama.DependencyInjection.Builder.AutoComponentContainerBuilder.ComponentCategory">
+            <summary>
+            自動登録するコンポーネントのカテゴリ
+            </summary>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Builder.ComponentContainerFactoryAttribute">
+            <summary>
+            DependencyInjectionコンテナを生成するファクトリメソッドに付ける属性
+            </summary>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Builder.FactoryNotFoundException">
+            <summary>
+            スクリプトからファクトリーメソッドがみつからない場合に発生する例外
+            </summary>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Builder.FactoryNotFoundException.#ctor">
+            <summary>
+            コンストラクタ
+            </summary>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Builder.ScriptComponentContainerBuilder">
+            <summary>
+            スクリプトを利用して、DependencyInjectionコンテナを生成して
+            コンポーネントを登録し、そのインスタンスを返すビルダ
+            </summary>
+            <seealso cref="T:Kodama.DependencyInjection.Container.ComponentContainerImpl"/>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Builder.ScriptComponentContainerBuilder.scriptPath">
+            <summary>
+            スクリプトファイルのパス
+            </summary>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Builder.ScriptComponentContainerBuilder.assemblyNames">
+            <summary>
+            スクリプトから参照するアセンブリの名前
+            </summary>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Builder.ScriptComponentContainerBuilder.AddReference(System.String)">
+            <summary>
+            スクリプトから参照するアセンブリの追加
+            </summary>
+            <param name="assemblyName">スクリプトから参照するアセンブリ</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Builder.ScriptComponentContainerBuilder.Build">
+            <summary>
+            スクリプトを利用して、DependencyInjectionコンテナを生成して
+            コンポーネントを登録し、そのインスタンスを返す
+            </summary>
+            <returns>生成されたDependencyInjectionコンテナ</returns>
+            <exception cref="T:Kodama.Script.Engine.CompileErrorException">
+            スクリプトのコンパイルエラーが発生した場合はこの例外を投げる
+            </exception>
+            <exception cref="T:Kodama.DependencyInjection.Builder.FactoryNotFoundException">
+            DependencyInjectionコンテナのファクトリーメソッドがスクリプトから
+            みつからない場合はこの例外を投げる
+            </exception>
+            <remarks>
+            <p>スクリプトにはC#、VBScriptとJScriptが利用できます。スクリプト上の
+            ComponentContainerFactoryAttribute属性をもちIComponentContainerインターフェイス
+            と互換性のある値を返すStaticな関数が、DependencyInjectionコンテナを生成し
+            依存関係が設定したものを返すファクトリーメソッドとなります。スクリプト上に
+            このファクトリーメソッドが存在しない場合はFactoryNotFoundException例外を
+            投げます。以下にスクリプトの例をあげます。</p>
+            <code lang="C#">
+            using System;
+            using Kodama.DependencyInjection.Container;
+            using Kodama.DependencyInjection.Factory;
+            using HogeHoge;
+            
+            public class ComponentContainerBuilder
+            {
+                [ComponentContainerFactory]
+                public IMutableComponentContainer Build()
+                {
+                    IMutableComponentContainer container = new ComponentContainerImpl();
+                    container.Register(typeof(ClassA));
+                    container.Register(typeof(ClassB));
+                    return container;
+                }
+            }
+            </code>
+            </remarks>
+        </member>
+        <member name="P:Kodama.DependencyInjection.Builder.ScriptComponentContainerBuilder.Script">
+            <summary>
+            スクリプトファイルのパス
+            </summary>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Builder.XmlComponentContainerBuilder">
+            <summary>
+            XMLを利用して、DependencyInjectionコンテナを生成して
+            コンポーネントを登録し、そのインスタンスを返すビルダ
+            </summary>
+            <remarks>
+            XMLの設定ファイルの詳細はKodama\DependencyInjection\Builder\Schema\ComponentConfig.xsd参照。
+            </remarks>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Builder.XmlComponentContainerBuilder.configPath">
+            <summary>
+            XML設定ファイルのパス
+            </summary>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Builder.XmlComponentContainerBuilder.#ctor(System.String)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="path">XML設定ファイルのパス</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Builder.XmlComponentContainerBuilder.Build">
+            <summary>
+            XML設定ファイルから、DependencyInjectionコンテナを生成して
+            コンポーネントを登録し、そのインスタンスを返す
+            </summary>
+            <returns>生成されたDependencyInjectionコンテナ</returns>
+            <exception cref="T:System.InvalidOperationException">
+            XML設定ファイルがスキーマに準じていない場合はこの例外を投げる
+            </exception>
+            <exception cref="T:Kodama.DependencyInjection.Loader.TypeNotFoundException">
+            指定された名前の型がみつからなかった場合に発生する例外
+            </exception>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Component.IArgumentComponentProvider">
+            <summary>
+            バインドする引数をBindFunctor#Invoke呼び出し時に毎に
+            IComponentContainer#GetComponentで提供するインターフェイス
+            </summary>
+            <seealso cref="T:Kodama.DependencyInjection.Container.ComponentContainerImpl"/>
+        </member>
+        <member name="P:Kodama.DependencyInjection.Component.IArgumentComponentProvider.ComponentContainer">
+            <summary>
+            コンポーネントが登録されているコンテナ
+            </summary>
+        </member>
+        <member name="P:Kodama.DependencyInjection.Component.IArgumentComponentProvider.ComponentEntry">
+            <summary>
+            登録されているコンポーネント情報
+            </summary>
+        </member>
+        <member name="P:Kodama.DependencyInjection.Component.IArgumentComponentProvider.ComponentType">
+            <summary>
+            コンポーネントの型
+            </summary>
+        </member>
+        <member name="P:Kodama.DependencyInjection.Component.IArgumentComponentProvider.ComponentName">
+            <summary>
+            コンポーネントの名前
+            </summary>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Component.IComponentEntry">
+            <summary>
+            DependencyInjectionコンテナに登録されているコンポーネント情報
+            </summary>
+            <seealso cref="T:Kodama.DependencyInjection.Container.ComponentContainerImpl"/>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Component.IComponentEntry.AddInjectionFanctor(Kodama.Function.Functor.Bind.BindFunctor)">
+            <summary>
+            依存性を注入するための引数をバインド済みの関数オブジェクトを追加する
+            </summary>
+            <param name="functor">追加する関数オブジェクト</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Component.IComponentEntry.AddInitializationFactor(Kodama.Function.Functor.IFunctor)">
+            <summary>
+            コンポーネントを初期化するための引数をバインド済みの関数オブジェクトを追加する
+            </summary>
+            <param name="functor">追加する関数オブジェクト</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Component.IComponentEntry.GetDependencies">
+            <summary>
+            コンポーネントが依存しているコンポーネントの登録情報を返す
+            </summary>
+            <returns>コンポーネントが依存しているコンポーネントの登録情報</returns>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Component.IComponentEntry.GetInstance">
+            <summary>
+            コンポーネントのインスタンスを返す
+            </summary>
+            <returns>コンポーネントのインスタンス</returns>
+            <remarks>
+            このメソッドで新しいインスタンスを返すか既存のインスタンスを返すかは
+            実装で選択します。
+            </remarks>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Component.IComponentEntry.Discard">
+            <summary>
+            コンポーネントのインスタンスを破棄する
+            </summary>
+            <remarks>
+            破棄するコンポーネントはIDisposableを実装していること。
+            </remarks>
+        </member>
+        <member name="P:Kodama.DependencyInjection.Component.IComponentEntry.ComponentType">
+            <summary>
+            登録されているコンポーネントの型
+            </summary>
+        </member>
+        <member name="P:Kodama.DependencyInjection.Component.IComponentEntry.ComponentName">
+            <summary>
+            登録されているコンポーネントの名前
+            </summary>
+        </member>
+        <member name="P:Kodama.DependencyInjection.Component.IComponentEntry.InjectionConstructor">
+            <summary>
+            依存性を注入するためのコンストラクタの引数をバインドしたファンクタ
+            </summary>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Component.NamedArgumentComponentProvider">
+            <summary>
+            バインドする引数をBindFunctor#Invoke呼び出し時に毎に
+            コンポーネントの名前をキーにIComponentContainer#GetComponent
+            で提供するクラス
+            </summary>
+            <seealso cref="T:Kodama.DependencyInjection.Container.ComponentContainerImpl"/>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Component.NamedArgumentComponentProvider.componentContainer">
+            <summary>
+            コンポーネントが登録されているコンテナ
+            </summary>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Component.NamedArgumentComponentProvider.componentName">
+            <summary>
+            コンポーネントの名前
+            </summary>
+            <remarks>
+            この名前でIComponentContainer#GetComponentします。
+            </remarks>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Component.NamedArgumentComponentProvider.#ctor(Kodama.DependencyInjection.Container.IComponentContainer,System.String)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="container">コンポーネントが登録されているコンテナ</param>
+            <param name="name">コンポーネントの名前</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Component.NamedArgumentComponentProvider.Provide">
+            <summary>
+            BindFunctor#Invokeが呼び出されたときにIComponentContainer#GetComponentし、バインドされた引数とする
+            </summary>
+            <returns>コンテナから取得したコンポーネントのインスタンス</returns>
+        </member>
+        <member name="P:Kodama.DependencyInjection.Component.NamedArgumentComponentProvider.ComponentContainer">
+            <summary>
+            コンポーネントが登録されているコンテナ
+            </summary>
+        </member>
+        <member name="P:Kodama.DependencyInjection.Component.NamedArgumentComponentProvider.ComponentEntry">
+            <summary>
+            登録されているコンポーネント情報
+            </summary>
+            <remarks>
+            このプロパティを参照する時点でコンポーネントはコンテナに登録されていなければならない。
+            </remarks>
+        </member>
+        <member name="P:Kodama.DependencyInjection.Component.NamedArgumentComponentProvider.ComponentType">
+            <summary>
+            コンポーネントの型
+            </summary>
+            <remarks>
+            このプロパティを参照する時点でコンポーネントはコンテナに登録されていなければならない。
+            </remarks>
+        </member>
+        <member name="P:Kodama.DependencyInjection.Component.NamedArgumentComponentProvider.ComponentName">
+            <summary>
+            コンポーネントの名前
+            </summary>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Component.OuterComponentEntry">
+            <summary>
+            DependencyInjectionコンテナに登録されているコンポーネント情報
+            </summary>
+            <remarks>
+            既にあるコンポーネントのインスタンスをDependencyInjectionコンテナに
+            登録するのに使用します。
+            このコンポーネント情報で登録されているコンポーネントは、
+            IComponentContainer#GetComponent毎に常に同じインスタンスを返す。
+            </remarks>
+            <seealso cref="T:Kodama.DependencyInjection.Container.ComponentContainerImpl"/>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Component.OuterComponentEntry.componentInstance">
+            <summary>
+            登録されているコンポーネントのインスタンス
+            </summary>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Component.OuterComponentEntry.componentType">
+            <summary>
+            登録されているコンポーネントの型
+            </summary>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Component.OuterComponentEntry.componentName">
+            <summary>
+            登録されているコンポーネントの名前
+            </summary>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Component.OuterComponentEntry.isSolvedDependency">
+            <summary>
+            既に依存性が注入されているかどうか
+            </summary>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Component.OuterComponentEntry.injectionFactors">
+            <summary>
+            依存性を注入するための引数をバインド済みの関数オブジェクト
+            </summary>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Component.OuterComponentEntry.initializationFactors">
+            <summary>
+            コンポーネントを初期化するための引数をバインド済みの関数オブジェクト
+            </summary>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Component.OuterComponentEntry.#ctor(Kodama.DependencyInjection.Container.IComponentContainer,System.Object)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="container">コンポーネントが登録するコンテナ</param>
+            <param name="instance">登録するコンポーネントのインスタンス</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Component.OuterComponentEntry.#ctor(Kodama.DependencyInjection.Container.IComponentContainer,System.Object,System.String)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="container">コンポーネントを登録するコンテナ</param>
+            <param name="instance">登録するコンポーネントのインスタンス</param>
+            <param name="name">登録するコンポーネントの名前</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Component.OuterComponentEntry.AddInjectionFanctor(Kodama.Function.Functor.Bind.BindFunctor)">
+            <summary>
+            依存性を注入するための引数をバインド済みの関数オブジェクトを追加する
+            </summary>
+            <param name="functor">追加する関数オブジェクト</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Component.OuterComponentEntry.AddInitializationFactor(Kodama.Function.Functor.IFunctor)">
+            <summary>
+            コンポーネントを初期化するための引数をバインド済みの関数オブジェクトを追加する
+            </summary>
+            <param name="functor">追加する関数オブジェクト</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Component.OuterComponentEntry.GetDependencies">
+            <summary>
+            コンポーネントが依存しているコンポーネントの登録情報を返す
+            </summary>
+            <returns>コンポーネントが依存しているコンポーネントの登録情報</returns>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Component.OuterComponentEntry.GetInstance">
+            <summary>
+            コンポーネントのインスタンスを取得する
+            </summary>
+            <returns>コンポーネントのインスタンス</returns>
+            <remarks>
+            このメソッドで新しいインスタンスを返すか既存のインスタンスを返すかは
+            実装で選択します。
+            </remarks>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Component.OuterComponentEntry.Discard">
+            <summary>
+            コンポーネントのインスタンスを破棄する
+            </summary>
+            <remarks>
+            破棄するコンポーネントはIDisposableを実装していること。
+            </remarks>
+        </member>
+        <member name="P:Kodama.DependencyInjection.Component.OuterComponentEntry.ComponentType">
+            <summary>
+            登録されているコンポーネントの型
+            </summary>
+        </member>
+        <member name="P:Kodama.DependencyInjection.Component.OuterComponentEntry.ComponentName">
+            <summary>
+            登録されているコンポーネントの名前
+            </summary>
+        </member>
+        <member name="P:Kodama.DependencyInjection.Component.OuterComponentEntry.InjectionConstructor">
+            <summary>
+            依存性を注入するためのコンストラクタの引数をバインドしたファンクタ
+            </summary>
+            <exception cref="T:System.NotSupportedException">このメソッドはサポートしていないので必ずこの例外を投げる</exception>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Component.PrototypeComponentEntry">
+            <summary>
+            DependencyInjectionコンテナに登録されているコンポーネント情報
+            </summary>
+            <remarks>
+            このコンポーネント情報で登録されているコンポーネントは、
+            IComponentContainer#GetComponent毎に常に新しいインスタンスを返す。
+            </remarks>
+            <seealso cref="T:Kodama.DependencyInjection.Container.ComponentContainerImpl"/>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Component.PrototypeComponentEntry.componentType">
+            <summary>
+            登録されているコンポーネントの型
+            </summary>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Component.PrototypeComponentEntry.componentName">
+            <summary>
+            登録されているコンポーネントの名前
+            </summary>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Component.PrototypeComponentEntry.injectionConstructorFunctor">
+            <summary>
+            依存性を注入するためのコンストラクタをバインドしたファンクタ
+            </summary>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Component.PrototypeComponentEntry.injectionFactors">
+            <summary>
+            依存性を注入するための引数をバインド済みの関数オブジェクト
+            </summary>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Component.PrototypeComponentEntry.initializationFactors">
+            <summary>
+            コンポーネントを初期化するための引数をバインド済みの関数オブジェクト
+            </summary>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Component.PrototypeComponentEntry.instantiating">
+            <summary>
+            インスタンスの生成中かどうかのフラグ。循環参照を検出するのにつかわれる
+            </summary>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Component.PrototypeComponentEntry.#ctor(Kodama.DependencyInjection.Container.IComponentContainer,System.Type)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="container">コンポーネントが登録するコンテナ</param>
+            <param name="type">登録するコンポーネントの型</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Component.PrototypeComponentEntry.#ctor(Kodama.DependencyInjection.Container.IComponentContainer,System.Type,System.String)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="container">コンポーネントを登録するコンテナ</param>
+            <param name="type">登録するコンポーネントの型</param>
+            <param name="name">登録するコンポーネントの名前</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Component.PrototypeComponentEntry.AddInjectionFanctor(Kodama.Function.Functor.Bind.BindFunctor)">
+            <summary>
+            依存性を注入するための引数をバインド済みの関数オブジェクトを追加する
+            </summary>
+            <param name="functor">追加する関数オブジェクト</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Component.PrototypeComponentEntry.AddInitializationFactor(Kodama.Function.Functor.IFunctor)">
+            <summary>
+            コンポーネントを初期化するための引数をバインド済みの関数オブジェクトを追加する
+            </summary>
+            <param name="functor">追加する関数オブジェクト</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Component.PrototypeComponentEntry.GetDependencies">
+            <summary>
+            コンポーネントが依存しているコンポーネントの登録情報を返す
+            </summary>
+            <returns>コンポーネントが依存しているコンポーネントの登録情報</returns>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Component.PrototypeComponentEntry.GetInstance">
+            <summary>
+            コンポーネントのインスタンスを返す
+            </summary>
+            <returns>コンポーネントのインスタンス</returns>
+            <exception cref="T:Kodama.DependencyInjection.Container.CyclicDependencyException">
+            コンポーネントの依存関係が循環していてかつ、循環しているコンポーネントが
+            Prototypeモードの場合に発生する例外
+            </exception>
+            <remarks>
+            このメソッドで新しいインスタンスを返すか既存のインスタンスを返すかは
+            実装で選択します。
+            </remarks>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Component.PrototypeComponentEntry.Discard">
+            <summary>
+            コンポーネントのインスタンスを破棄する
+            </summary>
+            <remarks>
+            破棄するコンポーネントはIDisposableを実装していること。
+            </remarks>
+        </member>
+        <member name="P:Kodama.DependencyInjection.Component.PrototypeComponentEntry.ComponentType">
+            <summary>
+            登録されているコンポーネントの型
+            </summary>
+        </member>
+        <member name="P:Kodama.DependencyInjection.Component.PrototypeComponentEntry.ComponentName">
+            <summary>
+            登録されているコンポーネントの名前
+            </summary>
+        </member>
+        <member name="P:Kodama.DependencyInjection.Component.PrototypeComponentEntry.InjectionConstructor">
+            <summary>
+            依存性を注入するためのコンストラクタの引数をバインドしたファンクタ
+            </summary>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Component.SingletonComponentEntry">
+            <summary>
+            DependencyInjectionコンテナに登録されているコンポーネント情報
+            </summary>
+            <remarks>
+            このコンポーネント情報で登録されているコンポーネントは、
+            IComponentContainer#GetComponent毎に常に同じインスタンスを返す。
+            </remarks>
+            <seealso cref="T:Kodama.DependencyInjection.Container.ComponentContainerImpl"/>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Component.SingletonComponentEntry.componentInstance">
+            <summary>
+            登録されているコンポーネントのインスタンス
+            </summary>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Component.SingletonComponentEntry.componentType">
+            <summary>
+            登録されているコンポーネントの型
+            </summary>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Component.SingletonComponentEntry.componentName">
+            <summary>
+            登録されているコンポーネントの名前
+            </summary>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Component.SingletonComponentEntry.injectionConstructorFunctor">
+            <summary>
+            依存性を注入するためのコンストラクタをバインドしたファンクタ
+            </summary>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Component.SingletonComponentEntry.injectionFactors">
+            <summary>
+            依存性を注入するための引数をバインド済みの関数オブジェクト
+            </summary>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Component.SingletonComponentEntry.initializationFactors">
+            <summary>
+            コンポーネントを初期化するための引数をバインド済みの関数オブジェクト
+            </summary>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Component.SingletonComponentEntry.instantiating">
+            <summary>
+            インスタンスの生成中かどうかのフラグ。循環参照を検出するのにつかわれる
+            </summary>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Component.SingletonComponentEntry.#ctor(Kodama.DependencyInjection.Container.IComponentContainer,System.Type)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="container">コンポーネントが登録するコンテナ</param>
+            <param name="type">登録するコンポーネントの型</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Component.SingletonComponentEntry.#ctor(Kodama.DependencyInjection.Container.IComponentContainer,System.Type,System.String)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="container">コンポーネントを登録するコンテナ</param>
+            <param name="type">登録するコンポーネントの型</param>
+            <param name="name">登録するコンポーネントの名前</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Component.SingletonComponentEntry.AddInjectionFanctor(Kodama.Function.Functor.Bind.BindFunctor)">
+            <summary>
+            依存性を注入するための引数をバインド済みの関数オブジェクトを追加する
+            </summary>
+            <param name="functor">追加する関数オブジェクト</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Component.SingletonComponentEntry.AddInitializationFactor(Kodama.Function.Functor.IFunctor)">
+            <summary>
+            コンポーネントを初期化するための引数をバインド済みの関数オブジェクトを追加する
+            </summary>
+            <param name="functor">追加する関数オブジェクト</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Component.SingletonComponentEntry.GetDependencies">
+            <summary>
+            コンポーネントが依存しているコンポーネントの登録情報を返す
+            </summary>
+            <returns>コンポーネントが依存しているコンポーネントの登録情報</returns>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Component.SingletonComponentEntry.GetInstance">
+            <summary>
+            コンポーネントのインスタンスを取得する
+            </summary>
+            <returns>コンポーネントのインスタンス</returns>
+            <exception cref="T:Kodama.DependencyInjection.Container.CyclicDependencyException">
+            コンポーネントの依存関係がコンストラクタインジェクションで
+            循環していてかつ、循環しているコンポーネントがSingletonモードの場合に発生する例外
+            </exception>
+            <remarks>
+            このメソッドで新しいインスタンスを返すか既存のインスタンスを返すかは
+            実装で選択します。
+            </remarks>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Component.SingletonComponentEntry.Discard">
+            <summary>
+            コンポーネントのインスタンスを破棄する
+            </summary>
+            <remarks>
+            破棄するコンポーネントはIDisposableを実装していること。
+            </remarks>
+        </member>
+        <member name="P:Kodama.DependencyInjection.Component.SingletonComponentEntry.ComponentType">
+            <summary>
+            登録されているコンポーネントの型
+            </summary>
+        </member>
+        <member name="P:Kodama.DependencyInjection.Component.SingletonComponentEntry.ComponentName">
+            <summary>
+            登録されているコンポーネントの名前
+            </summary>
+        </member>
+        <member name="P:Kodama.DependencyInjection.Component.SingletonComponentEntry.InjectionConstructor">
+            <summary>
+            依存性を注入するためのコンストラクタの引数をバインドしたファンクタ
+            </summary>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Component.TypedArgumentComponentProvider">
+            <summary>
+            バインドする引数をBindFunctor#Invoke呼び出し時に毎に
+            コンポーネントの型をキーにIComponentContainer#GetComponent
+            で提供するクラス
+            </summary>
+            <seealso cref="T:Kodama.DependencyInjection.Container.ComponentContainerImpl"/>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Component.TypedArgumentComponentProvider.componentContainer">
+            <summary>
+            コンポーネントが登録されているコンテナ
+            </summary>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Component.TypedArgumentComponentProvider.componentType">
+            <summary>
+            コンポーネントの型
+            </summary>
+            <remarks>
+            この型でIComponentContainer#GetComponentします。
+            </remarks>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Component.TypedArgumentComponentProvider.#ctor(Kodama.DependencyInjection.Container.IComponentContainer,System.Type)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="container">コンポーネントが登録されているコンテナ</param>
+            <param name="type">コンポーネントの型</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Component.TypedArgumentComponentProvider.Provide">
+            <summary>
+            BindFunctor#Invokeが呼び出されたときにIComponentContainer#GetComponentし、バインドされた引数とする
+            </summary>
+            <returns>コンテナから取得したコンポーネントのインスタンス</returns>
+        </member>
+        <member name="P:Kodama.DependencyInjection.Component.TypedArgumentComponentProvider.ComponentContainer">
+            <summary>
+            コンポーネントが登録されているコンテナ
+            </summary>
+        </member>
+        <member name="P:Kodama.DependencyInjection.Component.TypedArgumentComponentProvider.ComponentEntry">
+            <summary>
+            登録されているコンポーネント情報
+            </summary>
+            <remarks>
+            このプロパティを参照する時点でコンポーネントはコンテナに登録されていなければならない。
+            </remarks>
+        </member>
+        <member name="P:Kodama.DependencyInjection.Component.TypedArgumentComponentProvider.ComponentType">
+            <summary>
+            コンポーネントの型
+            </summary>
+        </member>
+        <member name="P:Kodama.DependencyInjection.Component.TypedArgumentComponentProvider.ComponentName">
+            <summary>
+            コンポーネントの名前
+            </summary>
+            <remarks>
+            このプロパティを参照する時点でコンポーネントはコンテナに登録されていなければならない。
+            </remarks>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Container.ComponentContainerImpl">
+            <summary>
+            DependencyInjectionコンテナの実装クラスです
+            </summary>
+            <example>
+            <code lang="C#">
+            using System;
+            using Kodama.DependencyInjection.Component;
+            using Kodama.DependencyInjection.Container;
+            using Kodama.DependencyInjection.Factory;
+            using Kodama.Function;
+            using Kodama.Function.Bind;
+            using Kodama.Function.Member;
+            
+            ....
+            
+            public interface IBar
+            {
+                void Print();
+            }
+            
+            public class BarImpl : IBar
+            {
+                public void Print()
+                {
+                    Console.WriteLine("BarImpl");
+                }
+            }
+            
+            public class Foo
+            {
+                private IBar dependency1;
+                private IBar dependency2;
+                private int  val;
+            
+                // InjectionPoint属性のついたメソッドは自動的に
+                // セッターインジェクションのメソッドに設定される
+                [InjectionPoint]
+                public void SetDependency1(IBar dep)
+                {
+                    dependency1 = dep;
+                }
+            
+                public void SetDependency2(IBar dep, int v)
+                {
+                    dependency2 = dep;
+                    val         = v;
+                }
+            
+                // InitializationPoint属性のついたメソッドは自動的に
+                // 初期化メソッドに設定される
+                [InitializationPoint]
+                public void Initialize1()
+                {
+                    Console.WriteLine("Init1");
+                }
+            
+                public void Initialize2(int v)
+                {
+                    Console.WriteLine("Init2 val = " + v.ToString());
+                }
+            }
+            
+            ...
+            
+            // 通常はコンテナへのコンポーネントの登録、セッターインジェクション及び
+            // 初期化メソッドの設定はスクリプトで行う。
+            // 詳細はKodama.DependencyInjection.Factory.DefaultComponetContainerFactory#Create
+            // メソッドのオーバーロードを参照。
+            
+            IMutableComponentContainer container = new ComponentContainerImpl();
+            
+            continer.Register(typeof(BarImpl));
+            
+            IComponentEntry entry = new PrototypeComponetEntry(container, typeof(Foo));
+            
+            // 手動によるセッターインジェクションの設定
+            entry.AddInjectionFanctor(
+                new BindFunctor(
+                    new MemberFunctor(typeof(Foo).GetMethod("SetDependency2")),
+                    new NotBoundArgument(0),
+                    new TypedArgumentComponentProvider(container, typeof(IBar)),
+                    1));
+            
+            // 手動による初期化メソッドの設定
+            entry.AddInitializationFactor(
+                new BindFunctor(
+                    new MemberFunctor(typeof(Foo).GetMethod("Initialize2")),
+                    new NotBoundArgument(0),
+                    2));
+            
+            container.Register(entry);
+            
+            Foo foo = (Foo)continer.GetComponent(typeof(Foo));
+            </code>
+            </example>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Container.IMutableComponentContainer">
+            <summary>
+            DependencyInjectionコンテナの基底インターフェイスです
+            </summary>
+            <remarks>
+            このインターフェイスはMutableです。
+            </remarks>
+            <seealso cref="T:Kodama.DependencyInjection.Container.ComponentContainerImpl"/>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Container.IComponentContainer">
+            <summary>
+            DependencyInjectionコンテナの基底インターフェイスです
+            </summary>
+            <remarks>
+            このインターフェイスはImmutableです。
+            </remarks>
+            <seealso cref="T:Kodama.DependencyInjection.Container.ComponentContainerImpl"/>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.IComponentContainer.GetComponent(System.Type)">
+            <summary>
+            コンポーネントを取得する
+            </summary>
+            <param name="componentType">取得するコンポーネントの型</param>
+            <returns>引数にわたされた型のコンポーネント</returns>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.IComponentContainer.GetComponent(System.String)">
+            <summary>
+            コンポーネントを取得する
+            </summary>
+            <param name="componentName">取得するコンポーネントの名前</param>
+            <returns>引数にわたされた名前のコンポーネント</returns>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.IComponentContainer.Contains(System.Type)">
+            <summary>
+            コンポーネントが登録されているかチェックする
+            </summary>
+            <param name="componentType">登録されているか確認するコンポーネントの型</param>
+            <returns>コンポーネントが登録されているかどうか</returns>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.IComponentContainer.Contains(System.String)">
+            <summary>
+            コンポーネントが登録されているかチェックする
+            </summary>
+            <param name="componentName">登録されているか確認するコンポーネントの名前</param>
+            <returns>コンポーネントが登録されているかどうか</returns>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.IComponentContainer.GetComponentEntry(System.Type)">
+            <summary>
+            指定されたインターフェイスを実装するコンポーネントの登録情報を取得する
+            </summary>
+            <param name="interfaceType">取得する実装コンポーネントのインターフェイス</param>
+            <returns>指定されたインターフェイスを実装するコンポーネントの登録情報</returns>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.IComponentContainer.GetComponentEntry(System.String)">
+            <summary>
+            指定された名前をもつコンポーネントの登録情報を取得する
+            </summary>
+            <param name="componentName">取得するコンポーネントの名前</param>
+            <returns>指定された名前をもつコンポーネントの登録情報</returns>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.IComponentContainer.GetChildren">
+            <summary>
+            すべての子コンテナを取得する
+            </summary>
+            <returns>子コンテナの配列</returns>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.IMutableComponentContainer.Register(System.Type)">
+            <summary>
+            コンポーネントを登録する
+            </summary>
+            <param name="componentType">登録するコンポーネントの型</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.IMutableComponentContainer.RegisterInstance(System.Object)">
+            <summary>
+            コンポーネントを登録する
+            </summary>
+            <param name="componentInstance">登録するコンポーネントのインスタンス</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.IMutableComponentContainer.Register(System.Type,System.String)">
+            <summary>
+            コンポーネントを登録する
+            </summary>
+            <param name="componentType">登録するコンポーネントの型</param>
+            <param name="componentName">登録するコンポーネントの名前</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.IMutableComponentContainer.RegisterInstance(System.Object,System.String)">
+            <summary>
+            コンポーネントを登録する
+            </summary>
+            <param name="componentInstance">登録するコンポーネントのインスタンス</param>
+            <param name="componentName">登録するコンポーネントの名前</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.IMutableComponentContainer.Register(Kodama.DependencyInjection.Component.IComponentEntry)">
+            <summary>
+            コンポーネントを登録する
+            </summary>
+            <param name="componentEntry">登録するコンポーネントの情報</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.IMutableComponentContainer.Register(System.Type,System.Type)">
+            <summary>
+            コンポーネントを登録する
+            </summary>
+            <remarks>
+            特定のインターフェイスに優先して割り当てるコンポーネントを指定します。
+            </remarks>
+            <param name="interfaceType">優先して割り当てるインターフェイス</param>
+            <param name="implementComponentType">優先して割り当てるコンポーネントの型</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.IMutableComponentContainer.RegisterInstance(System.Type,System.Object)">
+            <summary>
+            コンポーネントを登録する
+            </summary>
+            <remarks>
+            特定のインターフェイスに優先して割り当てるコンポーネントを指定します。
+            </remarks>
+            <param name="interfaceType">優先して割り当てるインターフェイス</param>
+            <param name="implementComponentInstance">優先して割り当てるコンポーネントのインスタンス</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.IMutableComponentContainer.Register(System.Type,System.Type,System.String)">
+            <summary>
+            コンポーネントを登録する
+            </summary>
+            <remarks>
+            特定のインターフェイスに優先して割り当てるコンポーネントを指定します。
+            </remarks>
+            <param name="interfaceType">優先して割り当てるインターフェイス</param>
+            <param name="implementComponentType">優先して割り当てるコンポーネントの型</param>
+            <param name="componentName">優先して割り当てるコンポーネントの名前</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.IMutableComponentContainer.RegisterInstance(System.Type,System.Object,System.String)">
+            <summary>
+            コンポーネントを登録する
+            </summary>
+            <remarks>
+            特定のインターフェイスに優先して割り当てるコンポーネントを指定します。
+            </remarks>
+            <param name="interfaceType">優先して割り当てるインターフェイス</param>
+            <param name="implementComponentInstance">優先して割り当てるコンポーネントのインスタンス</param>
+            <param name="componentName">優先して割り当てるコンポーネントの名前</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.IMutableComponentContainer.Register(System.Type,Kodama.DependencyInjection.Component.IComponentEntry)">
+            <summary>
+            コンポーネントを登録する
+            </summary>
+            <remarks>
+            特定のインターフェイスに優先して割り当てるコンポーネントを指定します。
+            </remarks>
+            <param name="interfaceType">優先して割り当てるインターフェイス</param>
+            <param name="implementComponentEntry">優先して割り当てるコンポーネントの情報</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.IMutableComponentContainer.Discard">
+            <summary>
+            登録されているコンポーネントのインスタンスを破棄する
+            </summary>
+            <remarks>
+            登録されているコンポーネントのうちSingletonでインスタンスが
+            管理されているもののインスタンスを破棄する。破棄するコンポーネントは
+            IDisposableを実装していること。
+            </remarks>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.IMutableComponentContainer.AddChild(Kodama.DependencyInjection.Container.IComponentContainer)">
+            <summary>
+            子コンテナを追加する
+            </summary>
+            <param name="child">追加する子コンテナ</param>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Container.ComponentContainerImpl.primaryComponentEntries">
+            <summary>
+            特定のインターフェイスに優先して割り当てられるコンポーネントの情報
+            </summary>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Container.ComponentContainerImpl.secondaryComponentEntries">
+            <summary>
+            登録されているコンポーネントの情報
+            </summary>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Container.ComponentContainerImpl.children">
+            <summary>
+            子コンテナ
+            </summary>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.ComponentContainerImpl.GetComponent(System.Type)">
+            <summary>
+            コンポーネントを取得する
+            </summary>
+            <param name="componentType">取得するコンポーネントの型</param>
+            <returns>引数にわたされた型のコンポーネント</returns>
+            <exception cref="T:Kodama.DependencyInjection.Container.CyclicDependencyException">
+            依存関係が循環しているときに発生する例外
+            </exception>
+            <exception cref="T:Kodama.DependencyInjection.Container.TooManyRegistrationException">
+            指定されたインターフェイスを実装するコンポーネントが複数合った場合に発生する例外
+            </exception>
+            <exception cref="T:Kodama.DependencyInjection.Container.ComponentNotFoundException">
+            指定されたインターフェイスを実装するコンポーネントがなかった場合に発生する例外
+            </exception>
+            <exception cref="T:Kodama.DependencyInjection.Container.CyclicDependencyException">
+            コンポーネントの依存関係が循環していてかつ、循環しているコンポーネントが
+            Prototypeモードの場合に発生する例外
+            </exception>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.ComponentContainerImpl.GetComponent(System.String)">
+            <summary>
+            コンポーネントを取得する
+            </summary>
+            <param name="componentName">取得するコンポーネントの名前</param>
+            <returns>引数にわたされた名前のコンポーネント</returns>
+            <exception cref="T:Kodama.DependencyInjection.Container.TooManyRegistrationException">
+            指定された名前のコンポーネントが複数合った場合に発生する例外
+            </exception>
+            <exception cref="T:Kodama.DependencyInjection.Container.ComponentNotFoundException">
+            指定された名前のコンポーネントがなかった場合に発生する例外
+            </exception>
+            <exception cref="T:Kodama.DependencyInjection.Container.CyclicDependencyException">
+            コンポーネントの依存関係が循環していてかつ、循環しているコンポーネントが
+            Prototypeモードの場合に発生する例外
+            </exception>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.ComponentContainerImpl.Contains(System.Type)">
+            <summary>
+            コンポーネントが登録されているかチェックする
+            </summary>
+            <param name="componentType">登録されているか確認するコンポーネントの型</param>
+            <returns>コンポーネントが登録されているかどうか</returns>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.ComponentContainerImpl.Contains(System.String)">
+            <summary>
+            コンポーネントが登録されているかチェックする
+            </summary>
+            <param name="componentName">登録されているか確認するコンポーネントの名前</param>
+            <returns>コンポーネントが登録されているかどうか</returns>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.ComponentContainerImpl.Register(System.Type)">
+            <summary>
+            コンポーネントを登録する
+            </summary>
+            <param name="componentType">登録するコンポーネントの型</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.ComponentContainerImpl.RegisterInstance(System.Object)">
+            <summary>
+            コンポーネントを登録する
+            </summary>
+            <param name="componentInstance">登録するコンポーネントのインスタンス</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.ComponentContainerImpl.Register(System.Type,System.String)">
+            <summary>
+            コンポーネントを登録する
+            </summary>
+            <param name="componentType">登録するコンポーネントの型</param>
+            <param name="componentName">登録するコンポーネントの名前</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.ComponentContainerImpl.RegisterInstance(System.Object,System.String)">
+            <summary>
+            コンポーネントを登録する
+            </summary>
+            <param name="componentInstance">登録するコンポーネントのインスタンス</param>
+            <param name="componentName">登録するコンポーネントの名前</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.ComponentContainerImpl.Register(Kodama.DependencyInjection.Component.IComponentEntry)">
+            <summary>
+            コンポーネントを登録する
+            </summary>
+            <param name="componentEntry">登録するコンポーネントの情報</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.ComponentContainerImpl.Register(System.Type,System.Type)">
+            <summary>
+            コンポーネントを登録する
+            </summary>
+            <remarks>
+            特定のインターフェイスに優先して割り当てるコンポーネントを指定します。
+            </remarks>
+            <param name="interfaceType">優先して割り当てるインターフェイス</param>
+            <param name="implementComponentType">優先して割り当てるコンポーネント</param>
+            <exception cref="T:Kodama.DependencyInjection.Container.TooManyRegistrationException">
+            指定されたインターフェイスを実装するコンポーネントが複数合った場合に発生する例外
+            </exception>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.ComponentContainerImpl.RegisterInstance(System.Type,System.Object)">
+            <summary>
+            コンポーネントを登録する
+            </summary>
+            <remarks>
+            特定のインターフェイスに優先して割り当てるコンポーネントを指定します。
+            </remarks>
+            <param name="interfaceType">優先して割り当てるインターフェイス</param>
+            <param name="implementComponentInstance">優先して割り当てるコンポーネントのインスタンス</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.ComponentContainerImpl.Register(System.Type,System.Type,System.String)">
+            <summary>
+            コンポーネントを登録する
+            </summary>
+            <remarks>
+            特定のインターフェイスに優先して割り当てるコンポーネントを指定します。
+            </remarks>
+            <param name="interfaceType">優先して割り当てるインターフェイス</param>
+            <param name="implementComponentType">優先して割り当てるコンポーネントの型</param>
+            <param name="componentName">優先して割り当てるコンポーネントの名前</param>
+            <exception cref="T:Kodama.DependencyInjection.Container.TooManyRegistrationException">
+            指定されたインターフェイスを実装するコンポーネントが複数合った場合に発生する例外
+            </exception>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.ComponentContainerImpl.RegisterInstance(System.Type,System.Object,System.String)">
+            <summary>
+            コンポーネントを登録する
+            </summary>
+            <remarks>
+            特定のインターフェイスに優先して割り当てるコンポーネントを指定します。
+            </remarks>
+            <param name="interfaceType">優先して割り当てるインターフェイス</param>
+            <param name="implementComponentInstance">優先して割り当てるコンポーネントのインスタンス</param>
+            <param name="componentName">優先して割り当てるコンポーネントの名前</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.ComponentContainerImpl.Register(System.Type,Kodama.DependencyInjection.Component.IComponentEntry)">
+            <summary>
+            コンポーネントを登録する
+            </summary>
+            <remarks>
+            特定のインターフェイスに優先して割り当てるコンポーネントを指定します。
+            </remarks>
+            <param name="interfaceType">優先して割り当てるインターフェイス</param>
+            <param name="implementComponentEntry">優先して割り当てるコンポーネントの情報</param>
+            <exception cref="T:Kodama.DependencyInjection.Container.TooManyRegistrationException">
+            指定されたインターフェイスを実装するコンポーネントが複数合った場合に発生する例外
+            </exception>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.ComponentContainerImpl.GetComponentEntry(System.Type)">
+            <summary>
+            指定されたインターフェイスを実装するコンポーネントの登録情報を取得する
+            </summary>
+            <param name="interfaceType">取得する実装コンポーネントのインターフェイス</param>
+            <returns>指定されたインターフェイスを実装するコンポーネントの登録情報</returns>
+            <exception cref="T:Kodama.DependencyInjection.Container.TooManyRegistrationException">
+            指定されたインターフェイスを実装するコンポーネントが複数あった場合に発生する例外
+            </exception>
+            <exception cref="T:Kodama.DependencyInjection.Container.ComponentNotFoundException">
+            指定されたインターフェイスを実装するコンポーネントがなかった場合に発生する例外
+            </exception>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.ComponentContainerImpl.GetComponentEntry(System.String)">
+            <summary>
+            指定された名前をもつコンポーネントの登録情報を取得する
+            </summary>
+            <param name="componentName">取得するコンポーネントの名前</param>
+            <returns>指定された名前をもつコンポーネントの登録情報</returns>
+            <exception cref="T:Kodama.DependencyInjection.Container.TooManyRegistrationException">
+            指定された名前をもつコンポーネントが複数あった場合に発生する例外
+            </exception>
+            <exception cref="T:Kodama.DependencyInjection.Container.ComponentNotFoundException">
+            指定された名前をもつコンポーネントがなかった場合に発生する例外
+            </exception>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.ComponentContainerImpl.CheckTooManyRegistration(System.Type)">
+            <summary>
+            指定されたインターフェイスを持つコンポーネントが複数登録されてないかチェックする
+            </summary>
+            <param name="interfaceType">チェックするインターフェイス</param>
+            <returns>指定されたインターフェイスを持つコンポーネントがすでに複数登録されていないかどうか</returns>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.ComponentContainerImpl.CheckTooManyRegistration(System.String)">
+            <summary>
+            名前を持つコンポーネントが複数登録されてないかチェックする
+            </summary>
+            <param name="componentName">コンポーネントの名前</param>
+            <returns>名前を持つコンポーネントがすでに複数登録されていないかどうか</returns>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.ComponentContainerImpl.Discard">
+            <summary>
+            登録されているコンポーネントのインスタンスを破棄する
+            </summary>
+            <remarks>
+            登録されているコンポーネントのうちSingletonでインスタンスが
+            管理されているもののインスタンスを破棄する。破棄するコンポーネントは
+            IDisposableを実装していること。
+            </remarks>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.ComponentContainerImpl.GetChildren">
+            <summary>
+            すべての子コンテナを取得する
+            </summary>
+            <returns>子コンテナの配列</returns>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.ComponentContainerImpl.AddChild(Kodama.DependencyInjection.Container.IComponentContainer)">
+            <summary>
+            子コンテナを追加する
+            </summary>
+            <param name="child">追加する子コンテナ</param>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Container.ComponentNotFoundException">
+            <summary>
+            コンポーネントがコンテナに登録されていないときに発生する例外
+            </summary>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.ComponentNotFoundException.#ctor">
+            <summary>
+            コンストラクタ
+            </summary>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Container.CyclicDependencyException">
+            <summary>
+            依存関係が循環しているときに発生する例外
+            </summary>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.CyclicDependencyException.#ctor">
+            <summary>
+            コンストラクタ
+            </summary>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Container.TooManyRegistrationException">
+            <summary>
+            同じインターフェイスを実装しているコンポーネントが複数ある場合に発生する例外
+            </summary>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Container.TooManyRegistrationException.#ctor">
+            <summary>
+            コンストラクタ
+            </summary>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Loader.TypeLoader">
+            <summary>
+            指定されたパスのアセンブリから型をロードします
+            </summary>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Loader.TypeLoader.children">
+            <summary>
+            子ローダ
+            </summary>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Loader.TypeLoader.assemblies">
+            <summary>
+            型をロードするアセンブリ
+            </summary>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Loader.TypeLoader.#ctor">
+            <summary>
+            デフォルトコンストラクタ
+            </summary>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Loader.TypeLoader.#ctor(Kodama.DependencyInjection.Loader.TypeLoader)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="parent">親ローダ</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Loader.TypeLoader.AddChild(Kodama.DependencyInjection.Loader.TypeLoader)">
+            <summary>
+            子ローダを追加する
+            </summary>
+            <param name="child">追加する子ローダ</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Loader.TypeLoader.AddAssemblyFile(System.String)">
+            <summary>
+            型を読み出すアセンブリを追加する
+            </summary>
+            <param name="filename">型を読み出すアセンブリのファイル名</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Loader.TypeLoader.AddAssemblyFolder(System.String)">
+            <summary>
+            型を読み出すアセンブリを追加する
+            </summary>
+            <param name="folder">型を読み出すアセンブリが含まれるフォルダ</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Loader.TypeLoader.LoadType(System.String)">
+            <summary>
+            指定された名前の型をアセンブリからロードします
+            </summary>
+            <param name="fullTypeName">ロードする型の名前</param>
+            <returns>ロードされた型</returns>
+            <exception cref="T:Kodama.DependencyInjection.Loader.TypeNotFoundException">
+            指定された名前の型がみつからなかった場合に発生する例外
+            </exception>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Loader.TypeLoader.Dispose">
+            <summary>
+            ロードしたリソースを破棄する
+            </summary>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Loader.TypeNotFoundException">
+            <summary>
+            指定された型がみつからなかった場合に発生する冷害
+            </summary>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Loader.TypeNotFoundException.#ctor">
+            <summary>
+            コンストラクタ
+            </summary>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Marker.AutoRegistrationAssemblyAttribute">
+            <summary>
+            コンポーネントの自動登録に対応したアセンブリに付ける属性
+            </summary>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Marker.AutoRegistratonComponentAttribute">
+            <summary>
+            コンポーネントの自動登録に対応したコンポーネントに付ける属性
+            </summary>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Marker.AutoRegistratonComponentAttribute.componentCategory">
+            <summary>
+            登録するコンポーネントのカテゴリ
+            </summary>
+            <remarks>
+            これにより自動登録されるコンポーネントを選別することができる
+            </remarks>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Marker.AutoRegistratonComponentAttribute.instanceMode">
+            <summary>
+            登録するコンポーネントのインスタンス属性
+            </summary>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Marker.AutoRegistratonComponentAttribute.interfaceType">
+            <summary>
+            優先して割り当てるインターフェイスの型
+            </summary>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Marker.AutoRegistratonComponentAttribute.componentName">
+            <summary>
+            登録するコンポーネントの名前
+            </summary>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Marker.AutoRegistratonComponentAttribute.#ctor(System.String)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="category">コンポーネントのカテゴリ</param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Marker.AutoRegistratonComponentAttribute.Register(Kodama.DependencyInjection.Container.IMutableComponentContainer,System.Type)">
+            <summary>
+            コンポーネントをコンテナに登録する
+            </summary>
+            <param name="container">コンポーネントを登録するコンテナ</param>
+            <param name="type">登録するコンポーネント</param>
+        </member>
+        <member name="P:Kodama.DependencyInjection.Marker.AutoRegistratonComponentAttribute.ComponentCategory">
+            <summary>
+            登録するコンポーネントのカテゴリ
+            </summary>
+            <remarks>
+            これにより自動登録されるコンポーネントを選別することができる
+            </remarks>
+        </member>
+        <member name="P:Kodama.DependencyInjection.Marker.AutoRegistratonComponentAttribute.InstanceMode">
+            <summary>
+            登録するコンポーネントのインスタンス属性
+            </summary>
+            <remarks>
+            この属性の名前付き引数として利用します
+            </remarks>
+        </member>
+        <member name="P:Kodama.DependencyInjection.Marker.AutoRegistratonComponentAttribute.InterfaceType">
+            <summary>
+            優先して割り当てるインターフェイスの型
+            </summary>
+            <remarks>
+            この属性の名前付き引数として利用します
+            </remarks>
+        </member>
+        <member name="P:Kodama.DependencyInjection.Marker.AutoRegistratonComponentAttribute.ComponentName">
+            <summary>
+            登録するコンポーネントの名前
+            </summary>
+            <remarks>
+            この属性の名前付き引数として利用します
+            </remarks>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Marker.ComponentInstanceMode">
+            <summary>
+            自動登録するコンポーネントのインスタンス属性をあらわす列挙型
+            </summary>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Marker.ComponentInstanceMode.Prototype">
+            <summary>
+            PrototypeComponentEntryによるコンポーネントの登録
+            </summary>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Marker.ComponentInstanceMode.Singleton">
+            <summary>
+            SingletonComponentEntryによるコンポーネントの登録
+            </summary>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Marker.ComponentInstanceMode.Outer">
+            <summary>
+            OuterComponentEntryによるコンポーネントの登録
+            </summary>
+            <remarks>
+            実際にはこの値がつかわれることはない
+            </remarks>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Marker.ExplicitComponentAttribute">
+            <summary>
+            InjectionPointAttribute属性でマーキングされたメソッドの、自動
+            インジェクションされる引数にこの属性がついていた場合、属性が持つ
+            IArgumentComponentProviderをつかって依存性が注入されます
+            </summary>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Marker.ExplicitComponentAttribute.CreateProvider(Kodama.DependencyInjection.Container.IComponentContainer)">
+            <summary>
+            依存性を注入するIArgumentComponentProviderを生成する
+            </summary>
+            <param name="container">依存性を注入するのにつかうIComponentContainerのインスタンス</param>
+            <returns>依存性を注入するIArgumentComponentProviderのインスタンス</returns>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Marker.ExplicitComponentNameAttribute">
+            <summary>
+            InjectionPointAttribute属性でマーキングされたメソッドの、自動
+            インジェクションされる引数にこの属性がついていた場合、属性が持つ
+            名前のコンポーネントがインジェクションされます
+            </summary>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Marker.ExplicitComponentNameAttribute.componentName">
+            <summary>
+            自動インジェクションされるコンポーネントの名前
+            </summary>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Marker.ExplicitComponentNameAttribute.#ctor(System.String)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="name">
+            自動インジェクションされるコンポーネントの名前
+            </param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Marker.ExplicitComponentNameAttribute.CreateProvider(Kodama.DependencyInjection.Container.IComponentContainer)">
+            <summary>
+            依存性を注入するIArgumentComponentProviderを生成する
+            </summary>
+            <param name="container">依存性を注入するのにつかうIComponentContainerのインスタンス</param>
+            <returns>依存性を注入するIArgumentComponentProviderのインスタンス</returns>
+        </member>
+        <member name="P:Kodama.DependencyInjection.Marker.ExplicitComponentNameAttribute.ComponentName">
+            <summary>
+            自動インジェクションされるコンポーネントの名前
+            </summary>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Marker.ExplicitComponentTypeAttribute">
+            <summary>
+            InjectionPointAttribute属性でマーキングされたメソッドの、自動
+            インジェクションされる引数にこの属性がついていた場合、属性が持つ
+            型のコンポーネントがインジェクションされます
+            </summary>
+        </member>
+        <member name="F:Kodama.DependencyInjection.Marker.ExplicitComponentTypeAttribute.componentType">
+            <summary>
+            自動インジェクションされるコンポーネントの型
+            </summary>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Marker.ExplicitComponentTypeAttribute.#ctor(System.Type)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="type">
+            自動インジェクションされるコンポーネントの型
+            </param>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Marker.ExplicitComponentTypeAttribute.CreateProvider(Kodama.DependencyInjection.Container.IComponentContainer)">
+            <summary>
+            依存性を注入するIArgumentComponentProviderを生成する
+            </summary>
+            <param name="container">依存性を注入するのにつかうIComponentContainerのインスタンス</param>
+            <returns>依存性を注入するIArgumentComponentProviderのインスタンス</returns>
+        </member>
+        <member name="P:Kodama.DependencyInjection.Marker.ExplicitComponentTypeAttribute.ComponentType">
+            <summary>
+            自動インジェクションされるコンポーネントの型
+            </summary>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Marker.InitializationPointAttribute">
+            <summary>
+            初期化メソッドに付ける属性です
+            </summary>
+            <remarks>
+            初期化メソッドはインスタンス生成後、依存性が注入された後に
+            実行されるメソッドです。
+            </remarks>
+            <seealso cref="T:Kodama.DependencyInjection.Container.ComponentContainerImpl"/>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Marker.InjectionPointAttribute">
+            <summary>
+            SetterInjectionに利用するSetterに付ける属性です
+            </summary>
+            <seealso cref="T:Kodama.DependencyInjection.Container.ComponentContainerImpl"/>
+        </member>
+        <member name="T:Kodama.DependencyInjection.Marker.InvlidComponentInstanceModeException">
+            <summary>
+            不正な自動登録するコンポーネントのインスタンス属性が設定されたときに発生する例外
+            </summary>
+        </member>
+        <member name="M:Kodama.DependencyInjection.Marker.InvlidComponentInstanceModeException.#ctor">
+            <summary>
+            コンストラクタ
+            </summary>
+        </member>
+    </members>
+</doc>

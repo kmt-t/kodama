@@ -1,0 +1,891 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Kodama.Aop</name>
+    </assembly>
+    <members>
+        <member name="T:Kodama.Aop.Aspect.AspectImpl">
+            <summary>
+            IAspectインターフェイスの具象クラス。InterceptorとPointcutを結び付けます。
+            </summary>
+            <remarks>
+            このクラスで定義したアスペクトをAspectWeaverでWeaveします。
+            </remarks>
+            <seealso cref="T:Kodama.Aop.Weaver.AspectWeaver"/>
+            <seealso href="http://aopalliance.sourceforge.net/doc/index.html">AOP Alliance</seealso>
+        </member>
+        <member name="T:Kodama.Aop.Aspect.IAspect">
+            <summary>
+            Aspectの基底インターフェイス
+            </summary>
+            <remarks>
+            このインターフェイスで定義したアスペクトをAspectWeaverでWeaveします。
+            </remarks>
+            <seealso cref="T:Kodama.Aop.Weaver.AspectWeaver"/>
+            <seealso href="http://aopalliance.sourceforge.net/doc/index.html">AOP Alliance</seealso>
+        </member>
+        <member name="P:Kodama.Aop.Aspect.IAspect.Interceptor">
+            <summary>
+            Aspectに結び付けられているInterceptor
+            </summary>
+        </member>
+        <member name="P:Kodama.Aop.Aspect.IAspect.Pointcut">
+            <summary>
+            Aspectに結び付けられているPointcut
+            </summary>
+        </member>
+        <member name="F:Kodama.Aop.Aspect.AspectImpl.interceptor">
+            <summary>
+            Interceptor = 割り込み処理
+            </summary>
+        </member>
+        <member name="F:Kodama.Aop.Aspect.AspectImpl.pointcut">
+            <summary>
+            Pointcut = 割り込みポイント
+            </summary>
+        </member>
+        <member name="M:Kodama.Aop.Aspect.AspectImpl.#ctor(Kodama.Aop.Interceptor.IInterceptor,Kodama.Aop.Pointcut.IPointcut)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="i">Intercepter = 割り込み処理</param>
+            <param name="p">Pointcut = 割り込みポイント</param>
+        </member>
+        <member name="P:Kodama.Aop.Aspect.AspectImpl.Interceptor">
+            <summary>
+            Aspectに結び付けられているInterceptor
+            </summary>
+        </member>
+        <member name="P:Kodama.Aop.Aspect.AspectImpl.Pointcut">
+            <summary>
+            Aspectに結び付けられているPointcut
+            </summary>
+        </member>
+        <member name="T:Kodama.Aop.Interceptor.Delegate.InterceptorHandler">
+            <summary>
+            Interceptを行うデリゲート
+            </summary>
+        </member>
+        <member name="T:Kodama.Aop.Interceptor.Delegate.DelegateInterceptor">
+            <summary>
+            デリゲートによるInterceptor
+            </summary>
+            <seealso cref="T:Kodama.Aop.Weaver.AspectWeaver"/>
+            <seealso href="http://aopalliance.sourceforge.net/doc/index.html">AOP Alliance</seealso>
+        </member>
+        <member name="T:Kodama.Aop.Interceptor.IMethodInterceptor">
+            <summary>
+            MethodInterceptor
+            </summary>
+            <seealso cref="T:Kodama.Aop.Weaver.AspectWeaver"/>
+            <seealso href="http://aopalliance.sourceforge.net/doc/index.html">AOP Alliance</seealso>
+        </member>
+        <member name="T:Kodama.Aop.Interceptor.IInterceptor">
+            <summary>
+            Interceptor
+            </summary>
+            <seealso cref="T:Kodama.Aop.Weaver.AspectWeaver"/>
+            <seealso href="http://aopalliance.sourceforge.net/doc/index.html">AOP Alliance</seealso>
+        </member>
+        <member name="M:Kodama.Aop.Interceptor.IMethodInterceptor.Invoke(Kodama.Aop.JoinPoint.MethodInvocation,System.Object[]@)">
+            <summary>
+            JoinPointが呼び出されると、このメソッドが割り込みます
+            </summary>
+            <param name="invocation">呼び出されたメソッド</param>
+            <param name="outArguments">メソッドのout引数</param>
+            <returns>メソッドの戻り値</returns>
+        </member>
+        <member name="F:Kodama.Aop.Interceptor.Delegate.DelegateInterceptor.interceptorHandler">
+            <summary>
+            Interceptを行うデリゲート
+            </summary>
+        </member>
+        <member name="M:Kodama.Aop.Interceptor.Delegate.DelegateInterceptor.#ctor(Kodama.Aop.Interceptor.Delegate.InterceptorHandler)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="ih">Interceptを行うデリゲート</param>
+        </member>
+        <member name="M:Kodama.Aop.Interceptor.Delegate.DelegateInterceptor.Invoke(Kodama.Aop.JoinPoint.MethodInvocation,System.Object[]@)">
+            <summary>
+            JoinPointが呼び出されると、このメソッドが割り込みます
+            </summary>
+            <param name="invocation">呼び出されたメソッド</param>
+            <param name="outArguments">メソッドのout引数</param>
+            <returns>メソッドの戻り値</returns>
+        </member>
+        <member name="T:Kodama.Aop.Interceptor.IConstructorInterceptor">
+            <summary>
+            ConstructorInterceptor
+            </summary>
+            <remarks>
+            現状ではIConstructorInterceptorは利用できません。
+            </remarks>
+            <seealso cref="T:Kodama.Aop.Weaver.AspectWeaver"/>
+            <seealso href="http://aopalliance.sourceforge.net/doc/index.html">AOP Alliance</seealso>
+        </member>
+        <member name="M:Kodama.Aop.Interceptor.IConstructorInterceptor.Construct(Kodama.Aop.JoinPoint.ConstructorInvocation,System.Object[]@)">
+            <summary>
+            JoinPointが呼び出されると、このメソッドが割り込みます
+            </summary>
+            <param name="invocation">呼び出されたコンストラクタ</param>
+            <param name="outArguments">メソッドのout引数</param>
+            <returns>メソッドの戻り値</returns>
+        </member>
+        <member name="T:Kodama.Aop.JoinPoint.ConstructorInvocation">
+            <summary>
+            ConstructorInvocation
+            </summary>
+            <remarks>
+            現状ではConstructorInvocationは利用できません。
+            </remarks>
+            <seealso cref="T:Kodama.Aop.Weaver.AspectWeaver"/>
+            <seealso href="http://aopalliance.sourceforge.net/doc/index.html">AOP Alliance</seealso>
+        </member>
+        <member name="T:Kodama.Aop.JoinPoint.IInvocation">
+            <summary>
+            Invocation
+            </summary>
+            <seealso cref="T:Kodama.Aop.Weaver.AspectWeaver"/>
+            <seealso href="http://aopalliance.sourceforge.net/doc/index.html">AOP Alliance</seealso>
+        </member>
+        <member name="T:Kodama.Aop.JoinPoint.IJoinPoint">
+            <summary>
+            JoinPoin
+            </summary>
+            <seealso cref="T:Kodama.Aop.Weaver.AspectWeaver"/>
+            <seealso href="http://aopalliance.sourceforge.net/doc/index.html">AOP Alliance</seealso>
+        </member>
+        <member name="M:Kodama.Aop.JoinPoint.IJoinPoint.FirstProceed(System.Object[]@)">
+            <summary>
+            最初のInterceptorのチェーンの呼び出しを行います
+            </summary>
+            <param name="outArgumemnts">メソッドのout引数</param>
+            <returns>メソッドの戻り値</returns>
+            <remarks>
+            複数のInterceptorが設定されている場合、Interceptorの数だけ
+            IJoinPoint#Proceed→Interceptor#Invokeが再帰的に
+            繰り返し呼び出される。このメソッドはその最初の呼び出しを
+            おこなう。基本的にメッセージシンクからしか呼ばれない。
+            </remarks>
+        </member>
+        <member name="M:Kodama.Aop.JoinPoint.IJoinPoint.Proceed(System.Object[]@)">
+            <summary>
+            Intercepterのチェーンの呼び出しを行います
+            </summary>
+            <param name="outArgumemnts">メソッドのout引数</param>
+            <returns>メソッドの戻り値</returns>
+        </member>
+        <member name="M:Kodama.Aop.JoinPoint.IInvocation.IsDefined(System.Type)">
+            <summary>
+            呼び出しに特定の属性が結ぶ付けられているかどうかチェックする
+            </summary>
+            <param name="attrType">結びつきをチェックする属性の型</param>
+            <returns>結び付けられているかどうか</returns>
+        </member>
+        <member name="P:Kodama.Aop.JoinPoint.IInvocation.Target">
+            <summary>
+            メソッド呼び出しオブジェクト
+            </summary>
+        </member>
+        <member name="P:Kodama.Aop.JoinPoint.IInvocation.Arguments">
+            <summary>
+            呼び出しの引数
+            </summary>
+        </member>
+        <member name="F:Kodama.Aop.JoinPoint.ConstructorInvocation.target">
+            <summary>
+            メソッド呼び出しオブジェクト
+            </summary>
+        </member>
+        <member name="F:Kodama.Aop.JoinPoint.ConstructorInvocation.message">
+            <summary>
+            メソッド呼び出しメッセージ
+            </summary>
+        </member>
+        <member name="F:Kodama.Aop.JoinPoint.ConstructorInvocation.nextSink">
+            <summary>
+            次に呼び出すべきIMessageSink
+            </summary>
+        </member>
+        <member name="F:Kodama.Aop.JoinPoint.ConstructorInvocation.interceptors">
+            <summary>
+            メソッドに結び付けられたInterceptor
+            </summary>
+        </member>
+        <member name="F:Kodama.Aop.JoinPoint.ConstructorInvocation.interceptIndex">
+            <summary>
+            Interceptorの再帰呼び出しレベル
+            </summary>
+        </member>
+        <member name="M:Kodama.Aop.JoinPoint.ConstructorInvocation.#ctor(System.Object,System.Runtime.Remoting.Activation.IConstructionCallMessage,System.Runtime.Remoting.Messaging.IMessageSink,Kodama.Aop.Interceptor.IConstructorInterceptor[])">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="obj">メソッド呼び出しオブジェクト</param>
+            <param name="msg">メソッド呼び出しメッセージ</param>
+            <param name="sink">次に呼び出すべきIMessageSink</param>
+            <param name="invokeInterceptors">このMethodInvocationで呼び出すInterceptor</param>
+        </member>
+        <member name="M:Kodama.Aop.JoinPoint.ConstructorInvocation.FirstProceed(System.Object[]@)">
+            <summary>
+            最初のInterceptorのチェーンの呼び出しを行います
+            </summary>
+            <param name="outArgumemnts">メソッドのout引数</param>
+            <returns>メソッドの戻り値</returns>
+            <remarks>
+            複数のInterceptorが設定されている場合、Interceptorの数だけ
+            ConstructorInvocation#Proceed→Interceptor#Invokeが再帰的に
+            繰り返し呼び出される。このメソッドはその最初の呼び出しを
+            おこなう。基本的にメッセージシンクからしか呼ばれない。
+            </remarks>
+        </member>
+        <member name="M:Kodama.Aop.JoinPoint.ConstructorInvocation.Proceed(System.Object[]@)">
+            <summary>
+            Interceptorのチェーンの呼び出しを行います
+            </summary>
+            <param name="outArgumemnts">メソッドのout引数</param>
+            <returns>メソッドの戻り値</returns>
+        </member>
+        <member name="M:Kodama.Aop.JoinPoint.ConstructorInvocation.IsDefined(System.Type)">
+            <summary>
+            呼び出しに特定の属性が結び付けられているかどうかチェックする
+            </summary>
+            <param name="attrType">結びつきをチェックする属性の型</param>
+            <returns>結び付けられているかどうか</returns>
+        </member>
+        <member name="P:Kodama.Aop.JoinPoint.ConstructorInvocation.Target">
+            <summary>
+            メソッド呼び出しオブジェクト
+            </summary>
+        </member>
+        <member name="P:Kodama.Aop.JoinPoint.ConstructorInvocation.Arguments">
+            <summary>
+            呼び出しの引数
+            </summary>
+        </member>
+        <member name="P:Kodama.Aop.JoinPoint.ConstructorInvocation.Message">
+            <summary>
+            メソッド呼び出しメッセージ
+            </summary>
+        </member>
+        <member name="T:Kodama.Aop.JoinPoint.MethodInvocation">
+            <summary>
+            MethodInvocation
+            </summary>
+            <seealso cref="T:Kodama.Aop.Weaver.AspectWeaver"/>
+            <seealso href="http://aopalliance.sourceforge.net/doc/index.html">AOP Alliance</seealso>
+        </member>
+        <member name="F:Kodama.Aop.JoinPoint.MethodInvocation.target">
+            <summary>
+            メソッド呼び出しオブジェクト
+            </summary>
+        </member>
+        <member name="F:Kodama.Aop.JoinPoint.MethodInvocation.message">
+            <summary>
+            メソッド呼び出しメッセージ
+            </summary>
+        </member>
+        <member name="F:Kodama.Aop.JoinPoint.MethodInvocation.nextSink">
+            <summary>
+            次に呼び出すべきIMessageSink
+            </summary>
+        </member>
+        <member name="F:Kodama.Aop.JoinPoint.MethodInvocation.interceptors">
+            <summary>
+            メソッドに結び付けられたInterceptor
+            </summary>
+        </member>
+        <member name="F:Kodama.Aop.JoinPoint.MethodInvocation.interceptIndex">
+            <summary>
+            Interceptorの再帰呼び出しレベル
+            </summary>
+        </member>
+        <member name="M:Kodama.Aop.JoinPoint.MethodInvocation.#ctor(System.Object,System.Runtime.Remoting.Messaging.IMethodCallMessage,System.Runtime.Remoting.Messaging.IMessageSink,Kodama.Aop.Interceptor.IMethodInterceptor[])">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="obj">メソッド呼び出しオブジェクト</param>
+            <param name="msg">メソッド呼び出しメッセージ</param>
+            <param name="sink">次に呼び出すべきIMessageSink</param>
+            <param name="invokeInterceptors">このMethodInvocationで呼び出すInterceptor</param>
+        </member>
+        <member name="M:Kodama.Aop.JoinPoint.MethodInvocation.FirstProceed(System.Object[]@)">
+            <summary>
+            最初のInterceptorのチェーンの呼び出しを行います
+            </summary>
+            <param name="outArgumemnts">メソッドのout引数</param>
+            <returns>メソッドの戻り値</returns>
+            <remarks>
+            複数のInterceptorが設定されている場合、Interceptorの数だけ
+            MethodInvocation#Proceed→Interceptor#Invokeが再帰的に
+            繰り返し呼び出される。このメソッドはその最初の呼び出しを
+            おこなう。基本的にメッセージシンクからしか呼ばれない。
+            </remarks>
+        </member>
+        <member name="M:Kodama.Aop.JoinPoint.MethodInvocation.Proceed(System.Object[]@)">
+            <summary>
+            Interceptorのチェーンの呼び出しを行います
+            </summary>
+            <param name="outArgumemnts">メソッドのout引数</param>
+            <returns>メソッドの戻り値</returns>
+        </member>
+        <member name="M:Kodama.Aop.JoinPoint.MethodInvocation.IsDefined(System.Type)">
+            <summary>
+            呼び出しに特定の属性が結び付けられているかどうかチェックする
+            </summary>
+            <param name="attrType">結びつきをチェックする属性の型</param>
+            <returns>結び付けられているかどうか</returns>
+        </member>
+        <member name="P:Kodama.Aop.JoinPoint.MethodInvocation.Target">
+            <summary>
+            メソッド呼び出しオブジェクト
+            </summary>
+        </member>
+        <member name="P:Kodama.Aop.JoinPoint.MethodInvocation.Arguments">
+            <summary>
+            呼び出しの引数
+            </summary>
+        </member>
+        <member name="P:Kodama.Aop.JoinPoint.MethodInvocation.Message">
+            <summary>
+            メソッド呼び出しメッセージ
+            </summary>
+        </member>
+        <member name="T:Kodama.Aop.Pointcut.Compose.Class.ClassAttributePointcut">
+            <summary>
+            属性でクラスをフィルタリングするPointcut
+            </summary>
+            <seealso cref="T:Kodama.Aop.Weaver.AspectWeaver"/>
+            <seealso href="http://aopalliance.sourceforge.net/doc/index.html">AOP Alliance</seealso>
+        </member>
+        <member name="T:Kodama.Aop.Pointcut.Compose.ComposiblePointcut">
+            <summary>
+            論理演算による合成が可能なPointcut
+            </summary>
+            <seealso cref="T:Kodama.Aop.Weaver.AspectWeaver"/>
+            <seealso href="http://aopalliance.sourceforge.net/doc/index.html">AOP Alliance</seealso>
+        </member>
+        <member name="T:Kodama.Aop.Pointcut.IPointcut">
+            <summary>
+            Pointcut
+            </summary>
+            <seealso cref="T:Kodama.Aop.Weaver.AspectWeaver"/>
+            <seealso href="http://aopalliance.sourceforge.net/doc/index.html">AOP Alliance</seealso>
+        </member>
+        <member name="M:Kodama.Aop.Pointcut.IPointcut.IsApplied(System.Reflection.MethodBase)">
+            <summary>
+            メソッドがPointcutの条件に一致するかどうかチェックする
+            </summary>
+            <param name="method">チェックするメソッド</param>
+            <returns>メソッドがPointcutの条件に一致するかどうか</returns>
+        </member>
+        <member name="M:Kodama.Aop.Pointcut.Compose.ComposiblePointcut.IsApplied(System.Reflection.MethodBase)">
+            <summary>
+            指定されたメソッドがアスペクトの対象となるかチェックします
+            </summary>
+            <param name="method">チェックするメソッド</param>
+            <returns>指定されたメソッドがアスペクトの対象となるかどうか</returns>
+        </member>
+        <member name="M:Kodama.Aop.Pointcut.Compose.ComposiblePointcut.op_LogicalNot(Kodama.Aop.Pointcut.Compose.ComposiblePointcut)">
+            <summary>
+            Pointcutの論理を反転します
+            </summary>
+            <param name="pointcut">論理を反転するPointcut</param>
+            <returns>論理が反転されたPointcut</returns>
+        </member>
+        <member name="M:Kodama.Aop.Pointcut.Compose.ComposiblePointcut.op_BitwiseAnd(Kodama.Aop.Pointcut.Compose.ComposiblePointcut,Kodama.Aop.Pointcut.Compose.ComposiblePointcut)">
+            <summary>
+            2つのPointcutの論理演算andをとるPointcutを返します
+            </summary>
+            <param name="left">右辺値のPointcut</param>
+            <param name="right">左辺値のPointcut</param>
+            <returns>2つのPointcutの論理演算andをとるPointcut</returns>
+        </member>
+        <member name="M:Kodama.Aop.Pointcut.Compose.ComposiblePointcut.op_BitwiseOr(Kodama.Aop.Pointcut.Compose.ComposiblePointcut,Kodama.Aop.Pointcut.Compose.ComposiblePointcut)">
+            <summary>
+            2つのPointcutの論理演算orをとるPointcutを返します
+            </summary>
+            <param name="left">右辺値のPointcut</param>
+            <param name="right">左辺値のPointcut</param>
+            <returns>2つのPointcutの論理演算orをとるPointcut</returns>
+        </member>
+        <member name="F:Kodama.Aop.Pointcut.Compose.Class.ClassAttributePointcut.attributeType">
+            <summary>
+            フィルタリングする属性
+            </summary>
+        </member>
+        <member name="M:Kodama.Aop.Pointcut.Compose.Class.ClassAttributePointcut.#ctor(System.Type)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="attrType">フィルタリングする属性</param>
+        </member>
+        <member name="M:Kodama.Aop.Pointcut.Compose.Class.ClassAttributePointcut.IsApplied(System.Reflection.MethodBase)">
+            <summary>
+            指定されたメソッドがアスペクトの対象となるかチェックします
+            </summary>
+            <param name="method">チェックするメソッド</param>
+            <returns>指定されたメソッドがアスペクトの対象となるかどうか</returns>
+        </member>
+        <member name="T:Kodama.Aop.Pointcut.Compose.Class.ClassNamePointcut">
+            <summary>
+            正規表現とクラスの名前でフィルタリングするPointcut
+            </summary>
+            <seealso cref="T:Kodama.Aop.Weaver.AspectWeaver"/>
+            <seealso href="http://aopalliance.sourceforge.net/doc/index.html">AOP Alliance</seealso>
+        </member>
+        <member name="F:Kodama.Aop.Pointcut.Compose.Class.ClassNamePointcut.regex">
+            <summary>
+            フィルタリングするクラス名の正規表現
+            </summary>
+        </member>
+        <member name="M:Kodama.Aop.Pointcut.Compose.Class.ClassNamePointcut.#ctor(System.String)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="name">フィルタリングするクラス名の正規表現</param>
+        </member>
+        <member name="M:Kodama.Aop.Pointcut.Compose.Class.ClassNamePointcut.IsApplied(System.Reflection.MethodBase)">
+            <summary>
+            指定されたメソッドがアスペクトの対象となるかチェックします
+            </summary>
+            <param name="method">チェックするメソッド</param>
+            <returns>指定されたメソッドがアスペクトの対象となるかどうか</returns>
+        </member>
+        <member name="T:Kodama.Aop.Pointcut.Compose.Delegate.PointcutHandler">
+            <summary>
+            Pontcutのフィルタリングを行うデリゲート
+            </summary>
+        </member>
+        <member name="T:Kodama.Aop.Pointcut.Compose.Delegate.DelegatePointcut">
+            <summary>
+            デリゲートでフィルタリングするPointcut
+            </summary>
+            <seealso cref="T:Kodama.Aop.Weaver.AspectWeaver"/>
+            <seealso href="http://aopalliance.sourceforge.net/doc/index.html">AOP Alliance</seealso>
+        </member>
+        <member name="F:Kodama.Aop.Pointcut.Compose.Delegate.DelegatePointcut.pointcutHandler">
+            <summary>
+            フィルタリングするデリゲート
+            </summary>
+        </member>
+        <member name="M:Kodama.Aop.Pointcut.Compose.Delegate.DelegatePointcut.#ctor(Kodama.Aop.Pointcut.Compose.Delegate.PointcutHandler)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="ph">フィルタリングするデリゲート</param>
+        </member>
+        <member name="M:Kodama.Aop.Pointcut.Compose.Delegate.DelegatePointcut.IsApplied(System.Reflection.MethodBase)">
+            <summary>
+            指定されたメソッドがアスペクトの対象となるかチェックします
+            </summary>
+            <param name="method">チェックするメソッド</param>
+            <returns>指定されたメソッドがアスペクトの対象となるかどうか</returns>
+        </member>
+        <member name="T:Kodama.Aop.Pointcut.Compose.Method.MethodAttributePointcut">
+            <summary>
+            属性でメソッドをフィルタリングするPointcut
+            </summary>
+            <seealso cref="T:Kodama.Aop.Weaver.AspectWeaver"/>
+            <seealso href="http://aopalliance.sourceforge.net/doc/index.html">AOP Alliance</seealso>
+        </member>
+        <member name="F:Kodama.Aop.Pointcut.Compose.Method.MethodAttributePointcut.attributeType">
+            <summary>
+            フィルタリングする属性
+            </summary>
+        </member>
+        <member name="M:Kodama.Aop.Pointcut.Compose.Method.MethodAttributePointcut.#ctor(System.Type)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="attrType">フィルタリングする属性</param>
+        </member>
+        <member name="M:Kodama.Aop.Pointcut.Compose.Method.MethodAttributePointcut.IsApplied(System.Reflection.MethodBase)">
+            <summary>
+            指定されたメソッドがアスペクトの対象となるかチェックします
+            </summary>
+            <param name="method">チェックするメソッド</param>
+            <returns>指定されたメソッドがアスペクトの対象となるかどうか</returns>
+        </member>
+        <member name="T:Kodama.Aop.Pointcut.Compose.Method.MethodNamePointcut">
+            <summary>
+            正規表現とメソッドの名前でフィルタリングするPointcut
+            </summary>
+            <seealso cref="T:Kodama.Aop.Weaver.AspectWeaver"/>
+            <seealso href="http://aopalliance.sourceforge.net/doc/index.html">AOP Alliance</seealso>
+        </member>
+        <member name="F:Kodama.Aop.Pointcut.Compose.Method.MethodNamePointcut.regex">
+            <summary>
+            フィルタリングするメソッド名の正規表現
+            </summary>
+        </member>
+        <member name="M:Kodama.Aop.Pointcut.Compose.Method.MethodNamePointcut.#ctor(System.String)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="name">フィルタリングするメソッド名の正規表現</param>
+        </member>
+        <member name="M:Kodama.Aop.Pointcut.Compose.Method.MethodNamePointcut.IsApplied(System.Reflection.MethodBase)">
+            <summary>
+            指定されたメソッドがアスペクトの対象となるかチェックします
+            </summary>
+            <param name="method">チェックするメソッド</param>
+            <returns>指定されたメソッドがアスペクトの対象となるかどうか</returns>
+        </member>
+        <member name="T:Kodama.Aop.Pointcut.Compose.Operator.AndPointcut">
+            <summary>
+            2つのPointcutを論理演算andで合成します
+            </summary>
+            <seealso cref="T:Kodama.Aop.Weaver.AspectWeaver"/>
+            <seealso href="http://aopalliance.sourceforge.net/doc/index.html">AOP Alliance</seealso>
+        </member>
+        <member name="F:Kodama.Aop.Pointcut.Compose.Operator.AndPointcut.left">
+            <summary>
+            左辺値のPointcut
+            </summary>
+        </member>
+        <member name="F:Kodama.Aop.Pointcut.Compose.Operator.AndPointcut.right">
+            <summary>
+            右辺値のPointcut
+            </summary>
+        </member>
+        <member name="M:Kodama.Aop.Pointcut.Compose.Operator.AndPointcut.#ctor(Kodama.Aop.Pointcut.IPointcut,Kodama.Aop.Pointcut.IPointcut)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="l">右辺値となるPointcut</param>
+            <param name="r">左辺値となるPointcut</param>
+        </member>
+        <member name="M:Kodama.Aop.Pointcut.Compose.Operator.AndPointcut.IsApplied(System.Reflection.MethodBase)">
+            <summary>
+            指定されたメソッドがアスペクトの対象となるかチェックします
+            </summary>
+            <param name="method">チェックするメソッド</param>
+            <returns>指定されたメソッドがアスペクトの対象となるかどうか</returns>
+        </member>
+        <member name="T:Kodama.Aop.Pointcut.Compose.Operator.NotPointcut">
+            <summary>
+            Pointcutの論理を反転します
+            </summary>
+            <seealso cref="T:Kodama.Aop.Weaver.AspectWeaver"/>
+            <seealso href="http://aopalliance.sourceforge.net/doc/index.html">AOP Alliance</seealso>
+        </member>
+        <member name="F:Kodama.Aop.Pointcut.Compose.Operator.NotPointcut.pointcut">
+            <summary>
+            論理を反転するPointcut
+            </summary>
+        </member>
+        <member name="M:Kodama.Aop.Pointcut.Compose.Operator.NotPointcut.#ctor(Kodama.Aop.Pointcut.IPointcut)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="p">右辺値となるPointcut</param>
+        </member>
+        <member name="M:Kodama.Aop.Pointcut.Compose.Operator.NotPointcut.IsApplied(System.Reflection.MethodBase)">
+            <summary>
+            指定されたメソッドがアスペクトの対象となるかチェックします
+            </summary>
+            <param name="method">チェックするメソッド</param>
+            <returns>指定されたメソッドがアスペクトの対処となるかどうか</returns>
+        </member>
+        <member name="T:Kodama.Aop.Pointcut.Compose.Operator.OrPointcut">
+            <summary>
+            2つのPointcutを論理演算orで合成します
+            </summary>
+            <seealso cref="T:Kodama.Aop.Weaver.AspectWeaver"/>
+            <seealso href="http://aopalliance.sourceforge.net/doc/index.html">AOP Alliance</seealso>
+        </member>
+        <member name="F:Kodama.Aop.Pointcut.Compose.Operator.OrPointcut.left">
+            <summary>
+            左辺値のPointcut
+            </summary>
+        </member>
+        <member name="F:Kodama.Aop.Pointcut.Compose.Operator.OrPointcut.right">
+            <summary>
+            右辺値のPointcut
+            </summary>
+        </member>
+        <member name="M:Kodama.Aop.Pointcut.Compose.Operator.OrPointcut.#ctor(Kodama.Aop.Pointcut.IPointcut,Kodama.Aop.Pointcut.IPointcut)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="l">右辺値となるPointcut</param>
+            <param name="r">左辺値となるPointcut</param>
+        </member>
+        <member name="M:Kodama.Aop.Pointcut.Compose.Operator.OrPointcut.IsApplied(System.Reflection.MethodBase)">
+            <summary>
+            指定されたメソッドがアスペクトの対象となるかチェックします
+            </summary>
+            <param name="method">チェックするメソッド</param>
+            <returns>指定されたメソッドがアスペクトの対象となるかどうか</returns>
+        </member>
+        <member name="T:Kodama.Aop.Weaver.AspectTargetAttribute">
+            <summary>
+            この属性のついたクラスはインスタンス生成時にAspect用透過的プロクシを生成します。
+            これにより特別なファクトリーを必要としません。
+            </summary>
+            <seealso cref="T:Kodama.Aop.Weaver.AspectWeaver"/>
+        </member>
+        <member name="M:Kodama.Aop.Weaver.AspectTargetAttribute.#ctor">
+            <summary>
+            コンストラクタ
+            </summary>
+        </member>
+        <member name="M:Kodama.Aop.Weaver.AspectTargetAttribute.GetPropertiesForNewContext(System.Runtime.Remoting.Activation.IConstructionCallMessage)">
+            <summary>
+            新しいコンテキスト作成時にプロパティを設定するときに呼ばれる。
+            使者シンクではインスタンスの生成はフックできないため、ここで
+            AspectのWaveを行っている。
+            </summary>
+            <param name="constructionCallMessage">コンストラクタ呼び出しIConstructionCallMessage</param>
+        </member>
+        <member name="T:Kodama.Aop.Weaver.AspectTargetProperty">
+            <summary>
+            Aspect対象コンテキストプロパティ
+            </summary>
+        </member>
+        <member name="M:Kodama.Aop.Weaver.AspectTargetProperty.GetObjectSink(System.MarshalByRefObject,System.Runtime.Remoting.Messaging.IMessageSink)">
+            <summary>
+            メッセージシンクの取得
+            </summary>
+            <param name="obj">メッセージシンクのターゲットとなるオブジェクト</param>
+            <param name="nextSink">次に処理すべきメッセージシンク</param>
+            <returns></returns>
+        </member>
+        <member name="M:Kodama.Aop.Weaver.AspectTargetProperty.IsNewContextOK(System.Runtime.Remoting.Contexts.Context)">
+            <summary>
+            新しいコンテキストが適切かどうか確認する
+            </summary>
+            <param name="newContext">コンテキスト</param>
+            <returns>新しいコンテキストのプロパティ等の確認結果</returns>
+        </member>
+        <member name="M:Kodama.Aop.Weaver.AspectTargetProperty.Freeze(System.Runtime.Remoting.Contexts.Context)">
+            <summary>
+            ???
+            </summary>
+            <param name="newContext">???</param>
+        </member>
+        <member name="P:Kodama.Aop.Weaver.AspectTargetProperty.Name">
+            <summary>
+            コンテキストプロパティ名
+            </summary>
+        </member>
+        <member name="T:Kodama.Aop.Weaver.AspectWeaver">
+            <summary>
+            AspectのWeave処理をするクラスです
+            </summary>
+            <remarks>
+            <p>このクラスはグローバルにインスタンスの生成時に処理を行うために
+            Singletonになっています。</p>
+            <p>このクラスでWeaveするAspectを登録すると、クラス生成時にAspectが
+            Weaveされます。また、既に生成された既存のインスタンスにAspectを
+            Weaveすることも可能です。</p>
+            <p>透過的プロクシとメッセージシンクを利用しているため、Weave対象と
+            なるオブジェクトはContextBoundObjectを継承している必要があります。</p>
+            <p>注意点は透過的プロクシとスタックビルダーシンクのオーバーヘッドが
+            メソッド呼び出しなどにがかかることです。パフォーマンスが要求される場合は
+            アスペクトを利用しない(ContextBoundObjectを継承せずAspectAttribute属性
+            も指定しない)ことを推奨します。</p>
+            <p>もうひとつの注意点は透過的プロクシはコンストラクタを直接インターセプト
+            することができません。なので、コンストラクタをインターセプトしたい場合は、
+            コンストラクタから初期化用のメソッドを呼び出すようにして、その初期化用の
+            メソッドをインターセプトして下さい。</p>
+            </remarks>
+            <example>
+            <code lang="C#">
+            
+            // IMethodInterceptorはメソッドの呼び出しをインターセプトします。
+            // 派生クラスでIMethodInterceptor#Invokeをオーバーライドして
+            // インターセプトの処理を書いてください。また、IMethodInterceptor#Invoke内
+            // では必ず1回、MethodInvocation#Proceedを呼んでください。
+            // MethodInvocation#Proceedが呼ばれると、インターセプトされたメソッドの
+            // 本来の処理が実行されます。
+            public class TestInterceptor : IMethodInterceptor
+            {
+                public object Invoke(MethodInvocation invocation, out object[] outArguments)
+                {
+                    Console.WriteLine("Pre");
+                    object ret = invocation.Proceed(out outArguments);
+                    Console.WriteLine("Post");
+                    return ret;
+                }
+            }
+            
+            // AttributePointcutの指定で利用する属性を定義します
+            [AttributeUsage(AttributeTargets.Method)]
+            public class TestInterceptAttribute : Attribute
+            {
+            }
+            
+            // アスペクトをWeaveするクラスにはAspectTarget属性をつけます。
+            // また、ContextBoundObjectを継承します。
+            [AspectTarget]
+            public class TestAspectWeavedClass : ContextBoundObject
+            {
+                // このメソッドがInterceptされるメソッドです。
+                // AttributePointcutを利用する場合、インターセプトされるメソッドには
+                // 適当に定義した属性をつけて、AttributePointcutの作成時にその属性を指定します。
+                // SignaturePointcutを利用する場合は、メソッド名を正規表現で指定できる
+                // ので属性の指定はいりません。
+                [TestIntercept]
+                public void Hello()
+                {
+                    Console.WriteLine("Hello");
+                }
+            }
+            
+            // このメソッドを実行すると、コンソールに、
+            // "Pre","Hello","Post"の順で3行、表示されます
+            public void MethodAttrInterceptTest()
+            {
+                // Aspectの生成
+                // InterceptorとPointcutを設定します
+                IAspect aspect = new AspectImpl(
+                    new TestInterceptor(),
+                    new MethodAttributePointcut(typeof(TestInterceptAttribute));
+            
+                // Aspectの登録
+                AspectWeaver.Instance().Register(aspect);
+            
+                // インスタンスの生成は普通のnew演算子でOKです
+                TestAspectWeavedClass wc = new TestAspectWeavedClass();
+            
+                // このメソッドがTestInterceptorでインターセプトされます
+                wc.Hello();
+            }
+            </code>
+            </example>
+        </member>
+        <member name="F:Kodama.Aop.Weaver.AspectWeaver.instance">
+            <summary>
+            Singletonのインスタンス
+            </summary>
+        </member>
+        <member name="F:Kodama.Aop.Weaver.AspectWeaver.aspects">
+            <summary>
+            登録されているAspect
+            </summary>
+        </member>
+        <member name="M:Kodama.Aop.Weaver.AspectWeaver.#ctor">
+            <summary>
+            コンストラクタ
+            </summary>
+            <remarks>
+            このクラスはSingletonなのでコンストラクタはprivateです。
+            </remarks>
+        </member>
+        <member name="M:Kodama.Aop.Weaver.AspectWeaver.Instance">
+            <summary>
+            Singletonのインスタンス取得メソッド
+            </summary>
+            <returns>AspectWeaverのインスタンス</returns>
+        </member>
+        <member name="M:Kodama.Aop.Weaver.AspectWeaver.Register(Kodama.Aop.Aspect.IAspect)">
+            <summary>
+            Aspectを登録する
+            </summary>
+            <param name="aspect">登録するAspect</param>
+        </member>
+        <member name="M:Kodama.Aop.Weaver.AspectWeaver.GetAspects">
+            <summary>
+            登録されたアスペクトの取得
+            </summary>
+            <returns>登録されたアスペクト</returns>
+        </member>
+        <member name="T:Kodama.Aop.Weaver.AspectWeaver.AspectWeaveMessageSink">
+            <summary>
+            Aspectを処理するメッセージシンク
+            </summary>
+        </member>
+        <member name="F:Kodama.Aop.Weaver.AspectWeaver.AspectWeaveMessageSink.target">
+            <summary>
+            メッセージシンクで処理するオブジェクト
+            </summary>
+        </member>
+        <member name="F:Kodama.Aop.Weaver.AspectWeaver.AspectWeaveMessageSink.nextSink">
+            <summary>
+            次に処理するIMessageSink
+            </summary>
+        </member>
+        <member name="F:Kodama.Aop.Weaver.AspectWeaver.AspectWeaveMessageSink.interceptorMap">
+            <summary>
+            割り込みテーブル
+            </summary>
+        </member>
+        <member name="M:Kodama.Aop.Weaver.AspectWeaver.AspectWeaveMessageSink.#ctor(System.MarshalByRefObject,System.Runtime.Remoting.Messaging.IMessageSink)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="obj">メッセージシンクで処理するオブジェクト</param>
+            <param name="sink">次に処理するメッセージシンク</param>
+        </member>
+        <member name="M:Kodama.Aop.Weaver.AspectWeaver.AspectWeaveMessageSink.Weave(Kodama.Aop.Aspect.IAspect)">
+            <summary>
+            アスペクトをインスタンスにWeaveする
+            </summary>
+            <param name="aspect">Weaveするアスペクト</param>
+            <exception cref="T:Kodama.Aop.Weaver.CanNotWeaveAspectException">
+            引数のインスタンスがWeave不可能なインスタンスの場合この例外を投げる
+            </exception>
+        </member>
+        <member name="M:Kodama.Aop.Weaver.AspectWeaver.AspectWeaveMessageSink.Weave">
+            <summary>
+            引数で渡されたインスタンスに登録されているアスペクトをWeaveする
+            </summary>
+            <exception cref="T:Kodama.Aop.Weaver.CanNotWeaveAspectException">
+            引数のインスタンスがWeave不可能なインスタンスの場合この例外を投げる
+            </exception>
+        </member>
+        <member name="M:Kodama.Aop.Weaver.AspectWeaver.AspectWeaveMessageSink.SyncProcessMessage(System.Runtime.Remoting.Messaging.IMessage)">
+            <summary>
+            メッセージシンクの処理(同期処理)
+            </summary>
+            <param name="msg">メソッド呼び出しのIMessage</param>
+            <returns>戻り値のIMessage</returns>
+        </member>
+        <member name="M:Kodama.Aop.Weaver.AspectWeaver.AspectWeaveMessageSink.AsyncProcessMessage(System.Runtime.Remoting.Messaging.IMessage,System.Runtime.Remoting.Messaging.IMessageSink)">
+            <summary>
+            メッセージシンクの処理(非同期処理)
+            </summary>
+            <param name="msg">メソッド呼び出しのIMessage</param>
+            <param name="replySink">メソッドの応答を処理するメッセージシンク</param>
+            <returns>戻り値のIMessage</returns>
+        </member>
+        <member name="P:Kodama.Aop.Weaver.AspectWeaver.AspectWeaveMessageSink.NextSink">
+            <summary>
+            次に処理するIMessageSink
+            </summary>
+        </member>
+        <member name="T:Kodama.Aop.Weaver.AspectWeaver.AspectWeaveMessageSink.InternalConstructionResponse">
+            <summary>
+            内部的に利用するコンストラクタ呼び出しに対する応答メッセージ
+            </summary>
+            <seealso href="http://www.mono-project.com/about/index.html">Mono Source Code</seealso>
+        </member>
+        <member name="M:Kodama.Aop.Weaver.AspectWeaver.AspectWeaveMessageSink.InternalConstructionResponse.#ctor(System.Object[],System.Runtime.Remoting.Messaging.IMethodCallMessage)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="outArguments">コンストラクタのout引数に出力する値の配列</param>
+            <param name="message">コンストラクタ呼び出しのIMethodCallMessage</param>
+        </member>
+        <member name="M:Kodama.Aop.Weaver.AspectWeaver.AspectWeaveMessageSink.InternalConstructionResponse.#ctor(System.Exception,System.Runtime.Remoting.Messaging.IMethodCallMessage)">
+            <summary>
+            コンストラクタ。コンストラクタ呼び出しに例外が発生した場合はこちらをつかいます
+            </summary>
+            <param name="e">コンストラクタで発生した例外</param>
+            <param name="message">コンストラクタ呼び出しのIMethodCallMessage</param>
+        </member>
+        <member name="T:Kodama.Aop.Weaver.CanNotWeaveAspectException">
+            <summary>
+            AspectがWeaveできない場合に発生する例外
+            </summary>
+        </member>
+        <member name="M:Kodama.Aop.Weaver.CanNotWeaveAspectException.#ctor">
+            <summary>
+            コンストラクタ
+            </summary>
+        </member>
+    </members>
+</doc>
