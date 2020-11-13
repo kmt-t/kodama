@@ -1,4 +1,4 @@
 # kodama
 
-2003年ぐらいに作ったDependencyInjectionコンテナのアーカイブです。
+2004年ぐらいに作ったDependencyInjectionコンテナのアーカイブです。
 当時はジェネリクスもなかった時代なのですみません。
